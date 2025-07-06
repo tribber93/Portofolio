@@ -1,0 +1,83 @@
+[
+    {
+        "title": "Implementing an AI Chatbot for Enhanced Information Access with LLM and RAG",
+        "category": "AI/Data/ML",
+        "image": "/projects/thumbnail/chatbot.png",
+        "date": "Feb 2024 - Jul 2024",
+        "summary": "Development of an AI-based chatbot using the RAG method at Catur Insan Cendekia University to enhance fast and contextual information access.",
+        "content": "/projects/markdown/ai-chatbot-rag-campus.md",
+        "slug": "ai-chatbot-rag-campus"
+    },
+    {
+        "title": "AI Chatbot for Health Research using RAG and LLM",
+        "category": "AI/Data/ML",
+        "image": "/projects/thumbnail/health-care-chatbot.png",
+        "date": "Feb 2024 - Jul 2024",
+        "summary": "Built an AI chatbot using RAG and LLMs to help health researchers access accurate information during an internship at PT. Inti Utama Solusindo.",
+        "content": "/projects/markdown/rag-health-researcher.md",
+        "slug": "rag-health-researcher"
+    },
+    {
+        "title": "Image Detection and Classification with YOLOv11",
+        "category": "AI/Data/ML",
+        "image": "/projects/thumbnail/yolo11.png",
+        "date": "Dec 2024",
+        "summary": "This project uses YOLOv11 to detect palm trees with numbered boxes and classify apples by color, saving cropped images accordingly.",
+        "content": "/projects/markdown/image-detection-classification-yolov11.md",
+        "slug": "image-detection-classification-yolov11"
+    },
+    {
+        "title": "Trash Image Classification using Pre-trained Vision Transformer (ViT)",
+        "category": "AI/Data/ML",
+        "image": "/projects/thumbnail/trash.png",
+        "date": "Jul 2023",
+        "summary": "This project implements an image classification system using a pre-trained Vision Transformer (ViT) from Hugging Face, fine-tuned to classify waste images into six categories",
+        "content": "/projects/markdown/trash-classification.md",
+        "slug": "trash-classification"
+    },
+    {
+        "title": "Quisiin: Questionnaire Marketplace",
+        "category": "AI/Data/ML",
+        "image": "/projects/thumbnail/quisiin.png",
+        "date": "Jul 2023",
+        "summary": "An App-Based Questionnaire Marketplace to Help Gather Data for Specific Targets.",
+        "content": "/projects/markdown/quisiin-questionnaire-marketplace.md",
+        "slug": "quisiin-questionnaire-marketplace"
+    },
+    {
+        "title": "Assetify: Know the Price, Make it Wise!",
+        "category": "AI/Data/ML",
+        "image": "/projects/thumbnail/assetify_logo.png",
+        "date": "Jul 2023",
+        "summary": "Assetify uses data and machine learning to accurately predict housing prices in Jakarta amid fluctuating market factors like location, facilities, and economic conditions.",
+        "content": "/projects/markdown/assetify-prediction.md",
+        "slug": "assetify-prediction"
+    },
+    {
+        "title": "Implementation of Career Center Information System at UCIC",
+        "category": "Web",
+        "image": "/projects/img/centra-karir-home.png",
+        "date": "Jul 2023",
+        "summary": "The Career Center Information System at Catur Insan Cendekia University is a web-based application built with Laravel (PHP) and MySQL, featuring two main user roles.",
+        "content": "/projects/markdown/centra-karir.md",
+        "slug": "centra-karir"
+    },
+    {
+        "title": "Task Management App - Backend",
+        "category": "Web",
+        "image": "/projects/thumbnail/task-management-backend.png",
+        "date": "Jul 2023",
+        "summary": "The Task Management App backend is a FastAPI-based, Dockerized API using JWT and Supabase for secure and scalable task and user management.",
+        "content": "/projects/markdown/task-management-backend.md",
+        "slug": "task-management-backend"
+    },
+    {
+        "title": "Photo Studio Booking App – QM Studio Photo",
+        "category": "Mobile",
+        "image": "/projects/img/booking-studio-login.jpg",
+        "date": "Jul 2023",
+        "summary": "QM Studio Photo is a Flutter-based mobile app that enables easy photo studio booking with GetX for state management and Firebase (including Google Auth) for backend services.",
+        "content": "/projects/markdown/booking-studio.md",
+        "slug": "booking-studio"
+    }
+]
