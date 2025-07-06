@@ -21,6 +21,7 @@ import {
 } from "react-icons/si";
 
 import { ProjectCard } from "./components/cards";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ProjectCardSkeleton } from "./components/skeletons";
 
 // import Swiper core and required modules
