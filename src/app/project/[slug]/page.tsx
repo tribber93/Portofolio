@@ -1,3 +1,5 @@
+// src/app/project/[slug]/page.tsx
+
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -9,17 +11,47 @@ import remarkGfm from "remark-gfm";
 import fs from "fs/promises";
 import path from "path";
 import rehypeRaw from "rehype-raw";
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
 
-export async function generateStaticParams() {
-    return projects
-        .filter((p) => p.slug)
-        .map((p) => ({ slug: p.slug }));
+type Props = {
+    params: Promise<{ slug: string }>;
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+// ✅ Pola ini sudah benar sesuai dokumentasi terbaru
+export async function generateMetadata(
+    { params }: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const { slug } = await params; // await untuk akses asinkron
+    const project = projects.find((p) => p.slug === slug);
+
+    if (!project) {
+        return {
+            title: "Project Not Found",
+            description: "Project detail not found.",
+        };
+    }
+
+    const previousImages = (await parent).openGraph?.images || [];
+
+    return {
+        title: `${project.title} | Yoni Tribber`,
+        description: project.summary ?? "Project details and description",
+        openGraph: {
+            images: project.image ? [project.image, ...previousImages] : previousImages,
+        },
+    };
 }
 
+// ✅ Static path generation untuk semua slug project
+export async function generateStaticParams() {
+    return projects.filter((p) => p.slug).map((p) => ({ slug: p.slug }));
+}
+
+// ✅ Membaca konten markdown dari file
 async function getMarkdownContent(relativePath: string) {
     try {
-        // Misal file markdown disimpan di folder 'public/projects'
         const filePath = path.join(process.cwd(), "public", relativePath);
         const content = await fs.readFile(filePath, "utf-8");
         return content;
@@ -29,31 +61,15 @@ async function getMarkdownContent(relativePath: string) {
     }
 }
 
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const project = projects.find((p) => p.slug === params.slug);
+// ✅ Komponen halaman utama detail project
+export default async function DetailProjectPage({ params }: Props) {
+    // [PERBAIKAN] Menggunakan 'await' untuk mengakses params sesuai dokumentasi Next.js 15
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
 
     if (!project) {
-        return {
-            title: "Project Not Found",
-            description: "Project detail not found.",
-        };
+        return notFound();
     }
-
-    return {
-        title: `${project.title} | Yoni Tribber`,
-        description: project.summary ?? "Project details and description",
-    };
-}
-
-export default async function DetailProjectPage({
-    params,
-}: {
-    params: { slug: string };
-}) {
-    const project = projects.find((p) => p.slug === params.slug);
-
-    if (!project) return notFound();
 
     const markdownContent = await getMarkdownContent(project.content);
 
@@ -62,13 +78,9 @@ export default async function DetailProjectPage({
             {/* Breadcrumb */}
             <nav className="fixed top-0 left-0 right-0 bg-gray-800 border-b border-gray-700 px-6 py-4 z-50">
                 <div className="max-w-6xl mx-auto flex items-center space-x-2 text-sm text-gray-400">
-                    <Link href="/" className="hover:text-teal-400">
-                        Beranda
-                    </Link>
+                    <Link href="/" className="hover:text-teal-400">Beranda</Link>
                     <span>/</span>
-                    <Link href="/#projects" className="hover:text-teal-400">
-                        Projects
-                    </Link>
+                    <Link href="/#projects" className="hover:text-teal-400">Projects</Link>
                     <span>/</span>
                     <span className="text-white">{project.title}</span>
                 </div>
@@ -96,7 +108,6 @@ export default async function DetailProjectPage({
 
                         <article className="prose dark:prose-invert max-w-none markdown">
                             <ReactMarkdown
-                                // components={components}
                                 remarkPlugins={[remarkGfm]}
                                 rehypePlugins={[rehypeRaw]}
                             >
@@ -105,7 +116,7 @@ export default async function DetailProjectPage({
                         </article>
                     </section>
 
-                    {/* Profile Card untuk mobile (bawah konten) */}
+                    {/* Profile Card (Mobile) */}
                     <aside className="block md:hidden mt-10">
                         <ProfileCard />
                     </aside>
@@ -114,7 +125,7 @@ export default async function DetailProjectPage({
 
             <Footer />
 
-            {/* Profile Card fixed kanan tengah untuk desktop */}
+            {/* Profile Card (Desktop kanan) */}
             <aside className="hidden md:block fixed top-1/2 right-6 transform -translate-y-1/2 w-80 z-40">
                 <ProfileCard />
             </aside>
