@@ -2,5 +2,72 @@
     "name": "Yoni Tribber",
     "email": "tribberyoni5@gmail.com",
     "phone": "+62 858 6457 1300",
-    "picture": "/yoni.jpg"
+    "picture": "/yoni.jpg",
+    "work experience": [
+        {
+            "title": "Machine Learning Engineer Intern",
+            "company": "PT. Inti Utama Solusindo (Pharos Group)",
+            "date": "Aug 2023 - Dec 2023",
+            "description": "● Developed a chatbot to assist researchers with quick, accurate information using data scraping to build a structured knowledge base.\n● Extracted and organized data from open-access health journals to support chatbot responses through RAG models with Langchain, integrating it with Django.\n● Collaborated with medical and data science teams to analyze chatbot interactions and refine performance.\n● Ensured relevant and up-to-date information in responses by regularly updating the knowledge base.\n● Applied AI and ML techniques like NLP and LLMs to improve response accuracy and reliability.\n● Used PostgreSQL for eficient database management and optimized query performance.\n● Used data analysis to track performance metrics and continuously enhance chatbot accuracy"
+        },
+        {
+            "title": "Machine Learning Cohort",
+            "company": "Bangkit Academy",
+            "date": "Jan 2023 - Jul 2023",
+            "description": ""
+        }
+    ],
+    "organizations": [
+        {
+            "name": "Himpunan Mahasiswa Teknik Informatika (HIMATIF)",
+            "role": "Vice Head of Research and Development (R&D) Division",
+            "date": "2022",
+            "description": "● Collaborated with team members to develop resources and strategies for the organization's growth and development.\n● Assisted in organizing and conducting workshops, seminars, and training sessions for members.\n● Contributed to the planning and execution of events aimed at enhancing technical skills and knowledge."
+        }
+    ],
+    "education": [
+        {
+            "degree": "Senior High School (IPA)",
+            "institution": "SMA Negeri 1 Beber",
+            "year": "2015 - 2018",
+            "ipk": "-"
+        },
+        {
+            "degree": "Bachelor of Informatics Engineering",
+            "institution": "Universitas Catur Insan Cendekia",
+            "year": "2020 - 2024",
+            "ipk": "3.81"
+        }
+    ],
+    "certificates": [
+        {
+            "name": "TensorFlow Developer Certificate",
+            "issuer": "TensorFlow",
+            "year": 2023,
+            "description": "Official certification that validates proficiency in developing deep learning models using TensorFlow.",
+            "image": "/certificates/tfd_certificate.jpg",
+            "link": "https://www.credential.net/53bf9287-fcca-4c5d-bdb2-0f218abe8701"
+        },
+        {
+            "name": "Bangkit Academy Graduate",
+            "issuer": "Google & Partners",
+            "year": 2023,
+            "description": "Completed intensive program in Machine Learning path, covering deep learning, cloud computing, and soft skills.",
+            "image": "/certificates/bangkit.jpg"
+        },
+        {
+            "name": "Best Thesis in the Informatics Engineering Program",
+            "issuer": "Universitas Catur Insan Cendekia",
+            "year": 2024,
+            "description": "Awarded for Best Thesis in the Informatics Engineering Program, recognizing outstanding research and innovation.",
+            "image": "/certificates/skripsi-terbaik.jpeg"
+        },
+        {
+            "name": "MSIB Internship Program - Machine Learning Engineer",
+            "issuer": "PT. Inti Utama Solusindo",
+            "year": 2023,
+            "description": "Completed the Kampus Merdeka MSIB internship program as a Machine Learning Engineer, focusing on AI chatbot development using LLM and Retrieval-Augmented Generation.",
+            "image": "/certificates/msib-intiutama.jpg"
+        }
+    ]
 }

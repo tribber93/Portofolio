@@ -33,7 +33,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import Footer from "./components/footer";
+import Footer from "@/app/components/Footer";
 import projects from "./data/projectsData.json";
 
 export default function Home() {
@@ -85,8 +85,6 @@ export default function Home() {
       description: "Completed the Kampus Merdeka MSIB internship program as a Machine Learning Engineer, focusing on AI chatbot development using LLM and Retrieval-Augmented Generation.",
       image: "/certificates/msib-intiutama.jpg",
     }
-
-    // Tambahkan sertifikat lain di sini
   ];
 
 

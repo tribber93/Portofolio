@@ -1,29 +1,30 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
+import AOSInit from "@/app/components/AOSInit";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Yoni Tribber",
+  title: "Portofolio Yoni Tribber",
   description: "AI & Web Developer Portfolio",
-  // metadataBase: new URL("localhost:3000"),
-  icons: "/logo_yt.jpg",
 };
-
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
-      <head>
-        <meta />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portofolio Saya</title>
-        {/* <script src="https://cdn.tailwindcss.com"></script> */}
-      </head>
-      <body className="bg-gray-200 text-white font-sans">
-        {children}
+    <html lang="id" className="scroll-smooth">
+      <AOSInit />
+      <body
+        className="overflow-x-hidden bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300"
+      >
+        <Navbar />
+        <main>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
