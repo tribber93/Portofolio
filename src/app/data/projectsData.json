@@ -1,5 +1,14 @@
 [
     {
+        "title": "Cling — AI Video Background Remover",
+        "category": "Mobile",
+        "image": "/projects/img/cling-main.png",
+        "date": "Mar 2026",
+        "summary": "Cling is an AI-powered Android application designed to automatically remove backgrounds from photos and videos directly on the user's device. This application was developed to help content creators, online sellers, and general users create professional visuals without needing complex editing software.",
+        "content": "/projects/markdown/cling-portfolio-article.md",
+        "slug": "cling"
+    },
+    {
         "title": "Implementing an AI Chatbot for Enhanced Information Access with LLM and RAG",
         "category": "AI/Data/ML",
         "image": "/projects/thumbnail/chatbot.png",

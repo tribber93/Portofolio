@@ -5,6 +5,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import projects from "../../data/projectsData.json";
 import ProfileCard from "@/app/components/cards";
+import ReadingProgressBar from "@/app/components/ReadingProgressBar";
 import Image from "next/image";
 import remarkGfm from "remark-gfm";
 import fs from "fs/promises";
@@ -20,8 +21,7 @@ import {
     LuExternalLink,
     LuGithub,
     LuLayers,
-    LuCpu,
-    LuBriefcase
+    LuCpu
 } from "react-icons/lu";
 
 type Props = {
@@ -48,7 +48,7 @@ export async function generateMetadata(
 
     return {
         title: `${project.title} | Yoni Tribber`,
-        description: project.summary ?? "Detail dan rincian mengenai proyek ini.",
+        description: project.summary ?? "Detail and description of this project.",
         openGraph: {
             images: project.image ? [project.image, ...previousImages] : previousImages,
         },
@@ -68,7 +68,7 @@ async function getMarkdownContent(relativePath: string) {
         return content;
     } catch (error) {
         console.error("Failed to read markdown file:", error);
-        return "Konten proyek sedang tidak tersedia.";
+        return "Project content is currently not available.";
     }
 }
 
@@ -177,37 +177,16 @@ export default async function DetailProjectPage({ params }: Props) {
     return (
         <>
             {/* Scroll Reading Progress Bar */}
-            <div
-                className="fixed top-0 left-0 h-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-400 z-50 transition-all duration-75 shadow-[0_0_10px_rgba(45,212,191,0.5)]"
-                id="reading-progress-bar"
-                style={{ width: '0%' }}
-            ></div>
-
-            {/* Script untuk Menjalankan Progress Bar (Tanpa hydration cost) */}
-            <script dangerouslySetInnerHTML={{
-                __html: `
-                (function() {
-                    const handleScroll = () => {
-                        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-                        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                        const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-                        const bar = document.getElementById('reading-progress-bar');
-                        if (bar) bar.style.width = scrolled + '%';
-                    };
-                    window.addEventListener('scroll', handleScroll);
-                    // Panggilan awal untuk inisialisasi status scroll jika halaman direfresh di tengah
-                    setTimeout(handleScroll, 100);
-                })();
-            ` }} />
+            <ReadingProgressBar />
 
             <main className="relative min-h-screen pt-24 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
 
                 {/* Breadcrumbs & Back Button (Integrated inline) */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 text-sm" data-aos="fade-up">
                     <nav className="flex items-center space-x-2 text-gray-400">
-                        <Link href="/" className="hover:text-teal-400 font-medium transition-colors">Beranda</Link>
+                        <Link href="/" className="hover:text-teal-400 font-medium transition-colors">Home</Link>
                         <span className="text-gray-600">/</span>
-                        <Link href="/project" className="hover:text-teal-400 font-medium transition-colors">Proyek</Link>
+                        <Link href="/project" className="hover:text-teal-400 font-medium transition-colors">Projects</Link>
                         <span className="text-gray-600">/</span>
                         <span className="text-white font-semibold truncate max-w-[200px] sm:max-w-[400px]">{project.title}</span>
                     </nav>
@@ -216,7 +195,7 @@ export default async function DetailProjectPage({ params }: Props) {
                         className="inline-flex items-center gap-2 text-xs font-semibold text-gray-300 hover:text-teal-400 transition-all bg-gray-900/60 hover:bg-gray-800/80 px-4 py-2.5 rounded-xl border border-gray-800/80 shadow-md group"
                     >
                         <LuArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                        Kembali ke Proyek
+                        Back to Projects
                     </Link>
                 </div>
 
@@ -242,7 +221,7 @@ export default async function DetailProjectPage({ params }: Props) {
                                 </span>
                                 <span className="inline-flex items-center gap-1 bg-gray-800/60 text-gray-300 border border-gray-800/50 px-3 py-1 rounded-full text-xs font-semibold">
                                     <LuClock size={12} className="text-cyan-400" />
-                                    {readTime} Menit Baca
+                                    {readTime} Min Read
                                 </span>
                             </div>
 
@@ -309,6 +288,17 @@ export default async function DetailProjectPage({ params }: Props) {
                                         },
                                         a: ({ node, ...props }) => {
                                             void node;
+                                            const isBadge = typeof props.href === "string" && (props.href.includes("play.google.com") || (typeof props.className === "string" && props.className.includes("badge")));
+                                            if (isBadge) {
+                                                return (
+                                                    <a
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-block transition-transform duration-300 hover:scale-[1.03]"
+                                                        {...props}
+                                                    />
+                                                );
+                                            }
                                             return (
                                                 <a
                                                     className="inline-flex items-center gap-1 text-teal-400 font-semibold hover:text-teal-300 transition-colors border-b border-dashed border-teal-500/30 hover:border-teal-400 pb-0.5"
@@ -320,11 +310,78 @@ export default async function DetailProjectPage({ params }: Props) {
                                         },
                                         img: ({ node, alt, ...props }) => {
                                             void node;
+                                            const isBadge = alt === "Get it on Google Play" || (typeof props.src === "string" && (props.src.includes("badge") || props.src.includes("play.google.com")));
+                                            if (isBadge) {
+                                                return (
+                                                    // eslint-disable-next-line @next/next/no-img-element
+                                                    <img className="h-[56px] w-auto inline-block hover:opacity-95 transition-opacity my-4" alt={alt || "Project Image"} {...props} />
+                                                );
+                                            }
                                             return (
                                                 <span className="block my-8 rounded-2xl overflow-hidden border border-gray-800/60 shadow-xl shadow-teal-950/5 group hover:border-teal-500/25 transition-all duration-500 transform hover:scale-[1.005]">
                                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                                     <img className="w-full h-auto object-cover max-h-[500px]" alt={alt || "Project Image"} {...props} />
                                                 </span>
+                                            );
+                                        },
+                                        iframe: ({ node, ...props }) => {
+                                            void node;
+                                            let src = props.src;
+                                            if (typeof src === "string") {
+                                                if (src.includes("youtube.com/shorts/")) {
+                                                    src = src.replace("youtube.com/shorts/", "youtube.com/embed/");
+                                                } else if (src.includes("youtu.be/")) {
+                                                    const id = src.split("/").pop()?.split("?")[0];
+                                                    src = `https://www.youtube.com/embed/${id}`;
+                                                } else if (src.includes("youtube.com/watch?v=")) {
+                                                    try {
+                                                        const urlObj = new URL(src);
+                                                        const v = urlObj.searchParams.get("v");
+                                                        if (v) {
+                                                            src = `https://www.youtube.com/embed/${v}`;
+                                                        }
+                                                    } catch {
+                                                        // Fallback if URL parsing fails
+                                                        const match = src.match(/[?&]v=([^&#]+)/);
+                                                        if (match) {
+                                                            src = `https://www.youtube.com/embed/${match[1]}`;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            const isYoutube = typeof src === "string" && (src.includes("youtube.com") || src.includes("youtu.be"));
+                                            if (isYoutube) {
+                                                const isShort = typeof props.src === "string" && (props.src.includes("/shorts/") || props.className?.includes("short"));
+                                                if (isShort) {
+                                                    return (
+                                                        <div className="flex justify-center my-8">
+                                                            <div className="w-full max-w-[315px] aspect-[9/16] rounded-3xl overflow-hidden border border-gray-800/80 shadow-2xl shadow-teal-950/20 hover:border-teal-500/30 transition-all duration-500 transform hover:scale-[1.01]">
+                                                                <iframe
+                                                                    src={src}
+                                                                    className="w-full h-full"
+                                                                    title={props.title || "YouTube Shorts Player"}
+                                                                    frameBorder="0"
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                    allowFullScreen
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                }
+                                            }
+
+                                            return (
+                                                <div className="overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl my-8 aspect-video">
+                                                    <iframe
+                                                        src={src}
+                                                        className="w-full h-full"
+                                                        title={props.title || "Video Player"}
+                                                        frameBorder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        allowFullScreen
+                                                    />
+                                                </div>
                                             );
                                         },
                                         table: ({ node, ...props }) => {
@@ -364,6 +421,28 @@ export default async function DetailProjectPage({ params }: Props) {
                                 <ProfileCard />
                             </div>
 
+                            {/* Meta Details Card */}
+                            <div
+                                className="glass-card rounded-2xl p-6 border border-gray-800/40 space-y-4 shadow-xl"
+                                data-aos="fade-left"
+                                data-aos-delay="250"
+                            >
+                                <h4 className="text-md font-bold text-white font-display border-b border-gray-800/50 pb-2.5 flex items-center gap-2">
+                                    <LuCpu className="text-teal-400" size={18} />
+                                    Project Information
+                                </h4>
+                                <div className="space-y-3.5 text-sm">
+                                    <div className="flex flex-col space-y-1">
+                                        <span className="text-xs text-gray-400 font-medium">Project Period</span>
+                                        <span className="text-gray-200 font-semibold">{project.date}</span>
+                                    </div>
+                                    <div className="flex flex-col space-y-1">
+                                        <span className="text-xs text-gray-400 font-medium">Main Category</span>
+                                        <span className="text-gray-200 font-semibold">{project.category}</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             {/* Action Card (Dynamic CTA Links) */}
                             <div
                                 className="glass-card rounded-2xl p-6 border border-gray-800/40 space-y-5 shadow-xl"
@@ -372,7 +451,7 @@ export default async function DetailProjectPage({ params }: Props) {
                             >
                                 <h4 className="text-md font-bold text-white font-display border-b border-gray-800/50 pb-2.5 flex items-center gap-2">
                                     <LuBookmark className="text-teal-400" size={18} />
-                                    Aksi & Sumber Daya
+                                    Actions & Resources
                                 </h4>
                                 <div className="flex flex-col gap-3">
                                     {actions.length > 0 ? (
@@ -392,8 +471,8 @@ export default async function DetailProjectPage({ params }: Props) {
                                             </a>
                                         ))
                                     ) : (
-                                        <div className="text-center py-4 bg-gray-500/5 rounded-xl border border-dashed border-gray-805">
-                                            <span className="text-xs text-gray-400 font-medium block">Tautan proyek disajikan dalam isi artikel</span>
+                                        <div className="text-center py-4 bg-gray-500/5 rounded-xl border border-dashed border-gray-850">
+                                            <span className="text-xs text-gray-400 font-medium block">Project links are available inside the article</span>
                                         </div>
                                     )}
 
@@ -402,7 +481,7 @@ export default async function DetailProjectPage({ params }: Props) {
                                         className="w-full inline-flex items-center justify-center gap-2 border border-gray-805 hover:border-teal-500/40 bg-gray-900/20 hover:bg-gray-850/40 text-gray-400 hover:text-teal-400 px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
                                     >
                                         <LuArrowLeft size={16} />
-                                        Kembali Ke Portofolio
+                                        Back to Portfolio
                                     </Link>
                                 </div>
                             </div>
@@ -416,7 +495,7 @@ export default async function DetailProjectPage({ params }: Props) {
                                 >
                                     <h4 className="text-md font-bold text-white font-display border-b border-gray-800/50 pb-2.5 flex items-center gap-2">
                                         <LuLayers className="text-teal-400" size={18} />
-                                        Teknologi Terkait
+                                        Related Technologies
                                     </h4>
                                     <div className="flex flex-wrap gap-2">
                                         {techStack.map((tech, tIdx) => (
@@ -431,34 +510,7 @@ export default async function DetailProjectPage({ params }: Props) {
                                 </div>
                             )}
 
-                            {/* Meta Details Card */}
-                            <div
-                                className="glass-card rounded-2xl p-6 border border-gray-800/40 space-y-4 shadow-xl"
-                                data-aos="fade-left"
-                                data-aos-delay="250"
-                            >
-                                <h4 className="text-md font-bold text-white font-display border-b border-gray-800/50 pb-2.5 flex items-center gap-2">
-                                    <LuCpu className="text-teal-400" size={18} />
-                                    Informasi Proyek
-                                </h4>
-                                <div className="space-y-3.5 text-sm">
-                                    <div className="flex flex-col space-y-1">
-                                        <span className="text-xs text-gray-400 font-medium">Peran / Keterlibatan</span>
-                                        <span className="text-gray-200 font-bold flex items-center gap-1.5">
-                                            <LuBriefcase size={14} className="text-teal-400" />
-                                            {project.category === "AI/Data/ML" ? "Lead AI & ML Researcher" : "Lead Web Developer"}
-                                        </span>
-                                    </div>
-                                    <div className="flex flex-col space-y-1">
-                                        <span className="text-xs text-gray-400 font-medium">Periode Pengerjaan</span>
-                                        <span className="text-gray-200 font-semibold">{project.date}</span>
-                                    </div>
-                                    <div className="flex flex-col space-y-1">
-                                        <span className="text-xs text-gray-400 font-medium">Kategori Utama</span>
-                                        <span className="text-gray-200 font-semibold">{project.category}</span>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </div>
                     </aside>

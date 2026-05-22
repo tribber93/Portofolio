@@ -7,10 +7,10 @@ import { LuArrowLeft, LuArrowUpRight, LuEye, LuTag } from "react-icons/lu";
 import projectsData from "@/app/data/projectsData.json";
 
 export default function AllProjectsClient() {
-    const categories = ["Semua", "AI/Data/ML", "Web", "Mobile"];
-    const [selectedCategory, setSelectedCategory] = useState("Semua");
+    const categories = ["All", "AI/Data/ML", "Web", "Mobile"];
+    const [selectedCategory, setSelectedCategory] = useState("All");
 
-    const filteredProjects = selectedCategory === "Semua" 
+    const filteredProjects = selectedCategory === "All" 
         ? projectsData 
         : projectsData.filter(p => p.category === selectedCategory);
 
@@ -23,27 +23,27 @@ export default function AllProjectsClient() {
             {/* Breadcrumbs */}
             <div className="flex items-center justify-between gap-4 mb-8 text-sm" data-aos="fade-up">
                 <nav className="flex items-center space-x-2 text-gray-400">
-                    <Link href="/" className="hover:text-teal-400 font-medium transition-colors">Beranda</Link>
+                    <Link href="/" className="hover:text-teal-400 font-medium transition-colors">Home</Link>
                     <span className="text-gray-600">/</span>
-                    <span className="text-white font-semibold">Semua Proyek</span>
+                    <span className="text-white font-semibold">All Projects</span>
                 </nav>
                 <Link 
                     href="/" 
                     className="inline-flex items-center gap-2 text-xs font-semibold text-gray-300 hover:text-teal-400 transition-all bg-gray-900/60 hover:bg-gray-800/80 px-4 py-2.5 rounded-xl border border-gray-800/80 shadow-md group"
                 >
                     <LuArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                    Kembali ke Beranda
+                    Back to Home
                 </Link>
             </div>
 
             {/* Header Title */}
             <div className="flex flex-col items-start mb-12" data-aos="fade-up">
-                <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">Portofolio Lengkap</span>
+                <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">Full Portfolio</span>
                 <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight font-display mt-2 text-white bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-                    Semua Proyek Portofolio
+                    All Portfolio Projects
                 </h1>
                 <p className="text-gray-300 mt-4 max-w-2xl leading-relaxed text-sm md:text-base font-medium">
-                    Jelajahi seluruh karya, proyek penelitian AI/ML, aplikasi web skala penuh, dan aplikasi mobile yang telah saya kembangkan.
+                    Explore all my work, AI/ML research projects, full-scale web applications, and mobile apps that I have developed.
                 </p>
                 <div className="h-1 w-20 bg-gradient-to-r from-teal-500 to-cyan-500 mt-6 rounded-full"></div>
             </div>
@@ -87,7 +87,7 @@ export default function AllProjectsClient() {
                                         <Link 
                                             href={`/project/${project.slug}`}
                                             className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-900 shadow-lg hover:scale-110 transition-transform cursor-pointer"
-                                            aria-label="Tinjau detail proyek"
+                                            aria-label="Review project details"
                                         >
                                             <LuEye size={20} />
                                         </Link>
@@ -117,15 +117,15 @@ export default function AllProjectsClient() {
                                     href={`/project/${project.slug}`}
                                     className="text-sm font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1 cursor-pointer transition-colors group/btn"
                                 >
-                                    Detail Proyek
+                                    Project Details
                                     <LuArrowUpRight className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                                 </Link>
                             </div>
                         </article>
                     ))
                 ) : (
-                    <div className="col-span-full text-center py-20 bg-gray-500/5 rounded-2xl border border-dashed border-gray-805">
-                        <p className="text-gray-400 font-medium">Tidak ada proyek dalam kategori ini.</p>
+                    <div className="col-span-full text-center py-20 bg-gray-500/5 rounded-2xl border border-dashed border-gray-850">
+                        <p className="text-gray-400 font-medium">No projects found in this category.</p>
                     </div>
                 )}
             </div>
@@ -137,7 +137,7 @@ export default function AllProjectsClient() {
                     className="inline-flex items-center gap-2 border border-gray-800 hover:border-teal-500 bg-gray-900/40 text-gray-300 hover:text-teal-400 font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-md cursor-pointer"
                 >
                     <LuArrowLeft size={16} />
-                    Kembali Ke Beranda
+                    Back to Home
                 </Link>
             </div>
         </main>

@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const sections = [
-    { id: "hero", label: "Beranda" },
-    { id: "about", label: "Tentang" },
-    { id: "skill", label: "Skill" },
-    { id: "proyek", label: "Proyek" },
-    { id: "history", label: "Riwayat" },
-    { id: "sertifikat", label: "Sertifikat" },
-    { id: "contact", label: "Kontak" },
+    { id: "hero", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "skill", label: "Skills" },
+    { id: "proyek", label: "Projects" },
+    { id: "history", label: "History" },
+    { id: "sertifikat", label: "Certificates" },
+    { id: "contact", label: "Contact" },
 ];
 
 export default function Navbar() {

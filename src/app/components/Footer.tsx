@@ -10,22 +10,22 @@ export default function Footer() {
                 
                 <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
                     <a href="#hero" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                        Beranda
+                        Home
                     </a>
                     <a href="#about" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                        Tentang
+                        About
                     </a>
                     <a href="#skill" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                        Skill
+                        Skills
                     </a>
                     <a href="#proyek" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                        Proyek
+                        Projects
                     </a>
                     <a href="#history" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                        Riwayat
+                        History
                     </a>
                     <a href="#contact" className="text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                        Kontak
+                        Contact
                     </a>
                 </div>
             </div>

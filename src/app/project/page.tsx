@@ -2,8 +2,8 @@ import AllProjectsClient from "./AllProjectsClient";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Semua Proyek | Portofolio Yoni Tribber",
-    description: "Daftar lengkap proyek portofolio Yoni Tribber - Data Scientist & AI Developer. Menampilkan proyek AI, Machine Learning, Web, dan Mobile.",
+    title: "All Projects | Yoni Tribber Portfolio",
+    description: "Full list of Yoni Tribber's portfolio projects - Data Scientist & AI Developer. Showcasing AI, Machine Learning, Web, and Mobile projects.",
 };
 
 export default function ProjectIndexPage() {

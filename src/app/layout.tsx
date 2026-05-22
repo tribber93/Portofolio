@@ -22,8 +22,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Portofolio Yoni Tribber | AI & Web Developer",
-  description: "Portofolio profesional Yoni Tribber - Data Scientist & AI Developer. Membangun model pembelajaran mendalam, LLM, RAG, dan aplikasi web modern.",
+  title: "Yoni Tribber Portfolio | AI & Web Developer",
+  description: "Professional portfolio of Yoni Tribber - Data Scientist & AI Developer. Building deep learning models, LLMs, RAG systems, and modern web applications.",
   keywords: ["Data Scientist", "AI Developer", "Machine Learning", "RAG", "LLM", "Informatics Engineering", "React", "Next.js"],
 };
 
@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={`dark scroll-smooth ${plusJakartaSans.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`dark scroll-smooth ${plusJakartaSans.variable} ${spaceGrotesk.variable}`}>
       <head>
         <meta charSet="UTF-8" />
       </head>
