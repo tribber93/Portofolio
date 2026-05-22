@@ -303,18 +303,18 @@ export default function Home() {
                     
                     {/* Left Column Text */}
                     <div className="md:col-span-7 flex flex-col items-start text-left space-y-6" data-aos="fade-up">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/5 text-teal-600 dark:text-teal-400 text-xs font-semibold uppercase tracking-wider">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/5 text-teal-400 text-xs font-semibold uppercase tracking-wider">
                             <span className="w-2 h-2 rounded-full bg-teal-500 animate-ping"></span>
                             Tersedia untuk AI & ML Opportunities
                         </div>
                         
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-display leading-tight tracking-tight text-gray-900 dark:text-white">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-display leading-tight tracking-tight text-white">
                             Designing & Building <br />
                             <span className="gradient-text">Intelligent AI Solutions</span>
                         </h1>
                         
-                        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-sans max-w-2xl">
-                            Halo, saya <strong className="text-teal-600 dark:text-teal-400 font-bold">{myData.name}</strong>, seorang <span className="text-gray-900 dark:text-white font-semibold font-mono">{typedText}</span><span className="typed-cursor">|</span> yang memadukan keahlian analitik data dengan implementasi kecerdasan buatan untuk menyelesaikan masalah kompleks.
+                        <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-sans max-w-2xl">
+                            Halo, saya <strong className="text-teal-400 font-bold">{myData.name}</strong>, seorang <span className="text-white font-semibold font-mono">{typedText}</span><span className="typed-cursor">|</span> yang memadukan keahlian analitik data dengan implementasi kecerdasan buatan untuk menyelesaikan masalah kompleks.
                         </p>
                         
                         <div className="flex flex-wrap gap-4 pt-4">
@@ -322,20 +322,20 @@ export default function Home() {
                                 Lihat Proyek
                                 <LuArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                             </a>
-                            <a href="#contact" className="inline-flex items-center justify-center border border-gray-200 dark:border-gray-800 hover:border-teal-500 dark:hover:border-teal-500 bg-white/40 dark:bg-gray-900/40 text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-md cursor-pointer">
+                            <a href="#contact" className="inline-flex items-center justify-center border border-gray-800 hover:border-teal-500 bg-gray-900/40 text-gray-300 hover:text-teal-400 font-medium px-6 py-3 rounded-xl transition-all duration-300 hover:-translate-y-0.5 backdrop-blur-md cursor-pointer">
                                 Hubungi Saya
                             </a>
                         </div>
                         
                         {/* Social Icons */}
-                        <div className="flex items-center gap-5 pt-6 text-gray-700 dark:text-gray-300">
-                            <a href="https://github.com/tribber" target="_blank" rel="noopener noreferrer" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors cursor-pointer" aria-label="GitHub">
+                        <div className="flex items-center gap-5 pt-6 text-gray-300">
+                            <a href="https://github.com/tribber" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="GitHub">
                                 <LuGithub size={22} />
                             </a>
-                            <a href="https://linkedin.com/in/yoni-tribber" target="_blank" rel="noopener noreferrer" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors cursor-pointer" aria-label="LinkedIn">
+                            <a href="https://linkedin.com/in/yoni-tribber" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="LinkedIn">
                                 <LuLinkedin size={22} />
                             </a>
-                            <a href="mailto:tribberyoni5@gmail.com" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors cursor-pointer" aria-label="Email">
+                            <a href="mailto:tribberyoni5@gmail.com" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="Email">
                                 <LuMail size={22} />
                             </a>
                         </div>
@@ -352,7 +352,7 @@ export default function Home() {
                         
                         <div className="relative w-60 h-60 md:w-80 md:h-80 flex items-center justify-center group z-10 overflow-visible">
                             {/* Inner container for the image rounding (overflow-hidden prevents image zoom bleeding) */}
-                            <div className="relative w-full h-full rounded-full p-2.5 bg-white/40 dark:bg-gray-900/40 border-2 border-white/50 dark:border-gray-800/50 shadow-2xl flex items-center justify-center overflow-hidden">
+                            <div className="relative w-full h-full rounded-full p-2.5 bg-gray-900/40 border-2 border-gray-800/50 shadow-2xl flex items-center justify-center overflow-hidden">
                                 <Image 
                                     src="/yoni.jpg" 
                                     alt="Yoni Tribber Profile" 
@@ -365,20 +365,20 @@ export default function Home() {
                             
                             {/* Badges */}
                             <div className="absolute -left-4 top-10 glass-card px-3 py-1.5 rounded-xl flex items-center gap-2 text-xs font-semibold shadow-md animate-bounce z-30 transform-gpu" style={{ animationDuration: '4s' }}>
-                                <LuCode className="text-teal-600 dark:text-teal-400" />
-                                <span className="text-gray-800 dark:text-gray-100">3.81 IPK</span>
+                                <LuCode className="text-teal-400" />
+                                <span className="text-gray-100">3.81 IPK</span>
                             </div>
                             <div className="absolute -right-8 bottom-16 glass-card px-3 py-1.5 rounded-xl flex items-center gap-2 text-xs font-semibold shadow-md animate-bounce z-30 transform-gpu" style={{ animationDuration: '6s' }}>
-                                <LuCpu className="text-cyan-600 dark:text-cyan-400" />
-                                <span className="text-gray-800 dark:text-gray-100">AI & ML Engineer</span>
+                                <LuCpu className="text-cyan-400" />
+                                <span className="text-gray-100">AI & ML Engineer</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Scroll Down */}
-                <a href="#about" className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 transition-colors cursor-pointer group">
-                    <span className="w-5 h-8 rounded-full border-2 border-gray-400 dark:border-gray-600 group-hover:border-teal-500 transition-colors flex items-start justify-center p-1">
+                <a href="#about" className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-gray-300 hover:text-teal-400 transition-colors cursor-pointer group">
+                    <span className="w-5 h-8 rounded-full border-2 border-gray-600 group-hover:border-teal-500 transition-colors flex items-start justify-center p-1">
                         <span className="w-1.5 h-1.5 bg-gray-500 group-hover:bg-teal-500 rounded-full animate-bounce"></span>
                     </span>
                     <span className="text-xs uppercase tracking-widest font-semibold font-display">Scroll Down</span>
@@ -389,36 +389,36 @@ export default function Home() {
             <section id="about" className="py-24 relative">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="flex flex-col items-start mb-16" data-aos="fade-up">
-                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase">01 / Tentang Saya</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-gray-900 dark:text-white">Siapa Yoni Tribber?</h2>
+                        <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">01 / Tentang Saya</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-white">Siapa Yoni Tribber?</h2>
                         <div className="h-1 w-20 bg-gradient-to-r from-teal-500 to-cyan-500 mt-4 rounded-full"></div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         {/* Bio Text Column */}
                         <div className="lg:col-span-7 flex flex-col justify-center space-y-6" data-aos="fade-right">
-                            <h3 className="text-2xl font-bold font-display text-gray-900 dark:text-white">Menjembatani Data Dengan Kecerdasan Buatan</h3>
+                            <h3 className="text-2xl font-bold font-display text-white">Menjembatani Data Dengan Kecerdasan Buatan</h3>
                             
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            <p className="text-gray-300 leading-relaxed">
                                 Saya adalah lulusan sarjana Teknik Informatika dari Universitas Catur Insan Cendekia yang memiliki ketertarikan mendalam pada Machine Learning, Rekayasa Data, dan Kecerdasan Buatan. Saya berfokus pada pengembangan solusi AI seperti chatbot berbasis Large Language Models (LLM) dengan arsitektur Retrieval-Augmented Generation (RAG) untuk pencarian dokumen yang cerdas dan relevan.
                             </p>
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            <p className="text-gray-300 leading-relaxed">
                                 Dengan latar belakang akademis yang kuat dan pengalaman praktis melalui program MSIB di Pharos Group serta lulusan jalur Machine Learning di Bangkit Academy, saya mampu mengembangkan kode yang tidak hanya berkinerja tinggi tetapi juga bersih, terstruktur, dan terstandarisasi dengan baik.
                             </p>
 
                             {/* Stats */}
                             <div className="grid grid-cols-3 gap-6 pt-6">
                                 <div className="p-4 rounded-xl bg-teal-500/5 border border-teal-500/10 text-center">
-                                    <span className="block text-2xl md:text-3xl font-extrabold text-teal-600 dark:text-teal-400 font-display">3.81</span>
-                                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">GPA / IPK</span>
+                                    <span className="block text-2xl md:text-3xl font-extrabold text-teal-400 font-display">3.81</span>
+                                    <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">GPA / IPK</span>
                                 </div>
                                 <div className="p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10 text-center">
-                                    <span className="block text-2xl md:text-3xl font-extrabold text-cyan-600 dark:text-cyan-400 font-display">10+</span>
-                                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Proyek AI & Web</span>
+                                    <span className="block text-2xl md:text-3xl font-extrabold text-cyan-400 font-display">10+</span>
+                                    <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">Proyek AI & Web</span>
                                 </div>
                                 <div className="p-4 rounded-xl bg-blue-500/5 border border-blue-500/10 text-center">
-                                    <span className="block text-2xl md:text-3xl font-extrabold text-blue-600 dark:text-blue-400 font-display">4+</span>
-                                    <span className="text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider">Sertifikat</span>
+                                    <span className="block text-2xl md:text-3xl font-extrabold text-blue-400 font-display">4+</span>
+                                    <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">Sertifikat</span>
                                 </div>
                             </div>
                         </div>
@@ -430,8 +430,8 @@ export default function Home() {
                                     <LuCpu size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold text-gray-900 dark:text-white font-display mb-1">AI & ML Integration</h4>
-                                    <p className="text-sm text-gray-700 dark:text-gray-300">Implementasi model Deep Learning, NLP, arsitektur RAG, dan fine-tuning Computer Vision (YOLOv11).</p>
+                                    <h4 className="text-lg font-bold text-white font-display mb-1">AI & ML Integration</h4>
+                                    <p className="text-sm text-gray-300">Implementasi model Deep Learning, NLP, arsitektur RAG, dan fine-tuning Computer Vision (YOLOv11).</p>
                                 </div>
                             </div>
                             
@@ -440,8 +440,8 @@ export default function Home() {
                                     <LuLayoutGrid size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold text-gray-900 dark:text-white font-display mb-1">Modern Web Apps</h4>
-                                    <p className="text-sm text-gray-700 dark:text-gray-300">Pengembangan backend handal (FastAPI, Django, Laravel) dan integrasi frontend dinamis (React, Next.js).</p>
+                                    <h4 className="text-lg font-bold text-white font-display mb-1">Modern Web Apps</h4>
+                                    <p className="text-sm text-gray-300">Pengembangan backend handal (FastAPI, Django, Laravel) dan integrasi frontend dinamis (React, Next.js).</p>
                                 </div>
                             </div>
 
@@ -450,8 +450,8 @@ export default function Home() {
                                     <LuZap size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold text-gray-900 dark:text-white font-display mb-1">Optimized & Scalable</h4>
-                                    <p className="text-sm text-gray-700 dark:text-gray-300">Praktik penulisan kode bersih terstruktur, dockerization kontainer, dan optimasi query database SQL.</p>
+                                    <h4 className="text-lg font-bold text-white font-display mb-1">Optimized & Scalable</h4>
+                                    <p className="text-sm text-gray-300">Praktik penulisan kode bersih terstruktur, dockerization kontainer, dan optimasi query database SQL.</p>
                                 </div>
                             </div>
                         </div>
@@ -460,11 +460,11 @@ export default function Home() {
             </section>
 
             {/* Skills Section */}
-            <section id="skill" className="py-24 bg-gray-500/5 border-y border-gray-200/20 dark:border-gray-800/20 relative">
+            <section id="skill" className="py-24 bg-gray-500/5 border-y border-gray-800/20 relative">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="flex flex-col items-start mb-16" data-aos="fade-up">
-                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase">02 / Keahlian Saya</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-gray-900 dark:text-white">Keahlian & Teknologi</h2>
+                        <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">02 / Keahlian Saya</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-white">Keahlian & Teknologi</h2>
                         <div className="h-1 w-20 bg-gradient-to-r from-teal-500 to-cyan-500 mt-4 rounded-full"></div>
                     </div>
 
@@ -475,20 +475,20 @@ export default function Home() {
                                     <div className="p-2 rounded-lg bg-teal-500/10">
                                         {category.icon}
                                     </div>
-                                    <h3 className="text-lg font-bold text-gray-900 dark:text-white font-display">{category.category}</h3>
+                                    <h3 className="text-lg font-bold text-white font-display">{category.category}</h3>
                                 </div>
 
                                 <ul className="space-y-5">
                                     {category.skills.map((skill, sIdx) => (
                                         <li key={sIdx} className="space-y-2">
                                             <div className="flex items-center justify-between text-sm">
-                                                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                                                    <span className="text-teal-500 dark:text-teal-400">{skill.icon}</span>
+                                                <div className="flex items-center gap-2 text-gray-300">
+                                                    <span className="text-teal-400">{skill.icon}</span>
                                                     <span className="font-semibold">{skill.name}</span>
                                                 </div>
-                                                <span className="font-semibold text-teal-600 dark:text-teal-400">{skill.percent}%</span>
+                                                <span className="font-semibold text-teal-400">{skill.percent}%</span>
                                             </div>
-                                            <div className="w-full h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                                            <div className="w-full h-1.5 bg-gray-800 rounded-full overflow-hidden">
                                                 <div 
                                                     className="h-full bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full transition-all duration-1000"
                                                     style={{ width: `${skill.percent}%` }}
@@ -507,8 +507,8 @@ export default function Home() {
             <section id="proyek" className="py-24 relative">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="flex flex-col items-start mb-12" data-aos="fade-up">
-                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase">03 / Portofolio Saya</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-gray-900 dark:text-white">Proyek Pilihan</h2>
+                        <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">03 / Portofolio Saya</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-white">Proyek Pilihan</h2>
                         <div className="h-1 w-20 bg-gradient-to-r from-teal-500 to-cyan-500 mt-4 rounded-full"></div>
                     </div>
 
@@ -521,7 +521,7 @@ export default function Home() {
                                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold tracking-wide cursor-pointer transition-all duration-300 ${
                                     selectedCategory === cat
                                         ? "bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-md shadow-teal-500/10"
-                                        : "border border-gray-200 dark:border-gray-800 bg-white/40 dark:bg-gray-900/40 text-gray-600 dark:text-gray-300 hover:border-teal-500 dark:hover:border-teal-500 hover:text-teal-600 dark:hover:text-teal-400"
+                                        : "border border-gray-800 bg-gray-900/40 text-gray-300 hover:border-teal-500 hover:text-teal-400"
                                 }`}
                             >
                                 {cat}
@@ -538,7 +538,7 @@ export default function Home() {
                             >
                                 <div>
                                     {/* Project Image and Hover Eye Overlay */}
-                                    <div className="relative w-full h-48 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                                    <div className="relative w-full h-48 overflow-hidden bg-gray-800">
                                         <Image 
                                             src={project.image} 
                                             alt={project.title} 
@@ -559,26 +559,26 @@ export default function Home() {
                                     
                                     {/* Text Info */}
                                     <div className="p-6 space-y-3">
-                                        <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-600 dark:text-teal-400 uppercase tracking-wide">
+                                        <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-400 uppercase tracking-wide">
                                             {project.category}
                                         </span>
                                         <h3 
                                             onClick={() => setSelectedProject(project)}
-                                            className="text-xl font-bold text-gray-900 dark:text-white font-display line-clamp-1 hover:text-teal-600 dark:hover:text-teal-400 transition-colors cursor-pointer"
+                                            className="text-xl font-bold text-white font-display line-clamp-1 hover:text-teal-400 transition-colors cursor-pointer"
                                         >
                                             {project.title}
                                         </h3>
-                                        <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3 leading-relaxed">
+                                        <p className="text-sm text-gray-300 line-clamp-3 leading-relaxed">
                                             {project.summary}
                                         </p>
                                     </div>
                                 </div>
 
                                 <div className="p-6 pt-0 flex justify-between items-center">
-                                    <span className="text-xs text-gray-700 dark:text-gray-300 font-medium font-mono">{project.date}</span>
+                                    <span className="text-xs text-gray-300 font-medium font-mono">{project.date}</span>
                                     <button 
                                         onClick={() => setSelectedProject(project)}
-                                        className="text-sm font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-1 cursor-pointer transition-colors group/btn"
+                                        className="text-sm font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1 cursor-pointer transition-colors group/btn"
                                     >
                                         Detail Proyek
                                         <LuArrowUpRight className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
@@ -600,21 +600,21 @@ export default function Home() {
                     ></div>
                     
                     {/* Modal Content Card */}
-                    <div className="relative w-full max-w-4xl bg-white dark:bg-[#0b0f19] border border-gray-200/50 dark:border-gray-800/50 rounded-2xl shadow-2xl overflow-hidden z-10 max-h-[85vh] flex flex-col">
+                    <div className="relative w-full max-w-4xl bg-[#0b0f19] border border-gray-800/50 rounded-2xl shadow-2xl overflow-hidden z-10 max-h-[85vh] flex flex-col">
                         
                         {/* Header */}
-                        <div className="p-6 border-b border-gray-200/30 dark:border-gray-800/30 flex items-center justify-between">
+                        <div className="p-6 border-b border-gray-800/30 flex items-center justify-between">
                             <div>
-                                <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-600 dark:text-teal-400 uppercase tracking-wide mb-1">
+                                <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-400 uppercase tracking-wide mb-1">
                                     {selectedProject.category}
                                 </span>
-                                <h3 className="text-2xl font-bold font-display text-gray-900 dark:text-white leading-tight">
+                                <h3 className="text-2xl font-bold font-display text-white leading-tight">
                                     {selectedProject.title}
                                 </h3>
                             </div>
                             <button 
                                 onClick={() => setSelectedProject(null)}
-                                className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors cursor-pointer"
+                                className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-800 text-gray-300 transition-colors cursor-pointer"
                                 aria-label="Tutup detail modal"
                             >
                                 <LuX size={20} />
@@ -624,7 +624,7 @@ export default function Home() {
                         {/* Body scroll area */}
                         <div className="p-6 md:p-8 overflow-y-auto flex-1 space-y-6">
                             {/* Project Banner Image */}
-                            <div className="relative w-full h-80 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <div className="relative w-full h-80 rounded-xl overflow-hidden bg-gray-800">
                                 <Image 
                                     src={selectedProject.image} 
                                     alt={selectedProject.title} 
@@ -636,21 +636,21 @@ export default function Home() {
                             {/* Info grid */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-gray-500/5 text-sm">
                                 <div>
-                                    <span className="block text-xs text-gray-700 dark:text-gray-300 font-semibold uppercase">Kategori</span>
-                                    <span className="font-semibold text-gray-800 dark:text-gray-200">{selectedProject.category}</span>
+                                    <span className="block text-xs text-gray-300 font-semibold uppercase">Kategori</span>
+                                    <span className="font-semibold text-gray-200">{selectedProject.category}</span>
                                 </div>
                                 <div>
-                                    <span className="block text-xs text-gray-700 dark:text-gray-300 font-semibold uppercase">Durasi Proyek</span>
-                                    <span className="font-semibold text-gray-800 dark:text-gray-200">{selectedProject.date}</span>
+                                    <span className="block text-xs text-gray-300 font-semibold uppercase">Durasi Proyek</span>
+                                    <span className="font-semibold text-gray-200">{selectedProject.date}</span>
                                 </div>
                                 <div>
-                                    <span className="block text-xs text-gray-700 dark:text-gray-300 font-semibold uppercase">Penulis</span>
-                                    <span className="font-semibold text-gray-800 dark:text-gray-200">Yoni Tribber</span>
+                                    <span className="block text-xs text-gray-300 font-semibold uppercase">Penulis</span>
+                                    <span className="font-semibold text-gray-200">Yoni Tribber</span>
                                 </div>
                                 <div className="flex items-center md:justify-end">
                                     <Link 
                                         href={`/project/${selectedProject.slug}`} 
-                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline"
+                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-400 hover:underline"
                                     >
                                         Halaman Penuh
                                         <LuExternalLink size={14} />
@@ -659,11 +659,11 @@ export default function Home() {
                             </div>
 
                             {/* Markdown Render */}
-                            <div className="prose dark:prose-invert max-w-none markdown pt-2 text-gray-700 dark:text-gray-300">
+                            <div className="prose prose-invert max-w-none markdown pt-2 text-gray-300">
                                 {modalLoading ? (
                                     <div className="flex flex-col items-center justify-center py-12 space-y-3">
                                         <div className="w-8 h-8 rounded-full border-2 border-teal-500 border-t-transparent animate-spin"></div>
-                                        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Memuat rincian proyek...</span>
+                                        <span className="text-sm font-semibold text-gray-300">Memuat rincian proyek...</span>
                                     </div>
                                 ) : (
                                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
@@ -674,10 +674,10 @@ export default function Home() {
                         </div>
 
                         {/* Footer details button */}
-                        <div className="p-4 border-t border-gray-200/30 dark:border-gray-800/30 bg-gray-500/5 flex justify-end">
+                        <div className="p-4 border-t border-gray-800/30 bg-gray-500/5 flex justify-end">
                             <button 
                                 onClick={() => setSelectedProject(null)}
-                                className="px-5 py-2.5 rounded-xl text-sm font-bold bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 transition-colors cursor-pointer"
+                                className="px-5 py-2.5 rounded-xl text-sm font-bold bg-gray-800 hover:bg-gray-700 text-gray-200 transition-colors cursor-pointer"
                             >
                                 Tutup
                             </button>
@@ -687,11 +687,11 @@ export default function Home() {
             )}
 
             {/* Experience & Education Timeline */}
-            <section id="history" className="py-24 bg-gray-500/5 border-y border-gray-200/20 dark:border-gray-800/20 relative">
+            <section id="history" className="py-24 bg-gray-500/5 border-y border-gray-800/20 relative">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="flex flex-col items-start mb-16" data-aos="fade-up">
-                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase">04 / Riwayat</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-gray-900 dark:text-white">Pendidikan & Pengalaman</h2>
+                        <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">04 / Riwayat</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-white">Pendidikan & Pengalaman</h2>
                         <div className="h-1 w-20 bg-gradient-to-r from-teal-500 to-cyan-500 mt-4 rounded-full"></div>
                     </div>
 
@@ -712,26 +712,26 @@ export default function Home() {
                                         data-aos={isLeft ? "fade-right" : "fade-left"}
                                     >
                                         {/* Dot Indicator */}
-                                        <div className="absolute left-[-22px] md:left-1/2 w-[16px] h-[16px] rounded-full border-4 border-white dark:border-[#0b0f19] bg-teal-500 transform md:-translate-x-1/2 top-1.5 shadow-md shadow-teal-500/30 z-10"></div>
+                                        <div className="absolute left-[-22px] md:left-1/2 w-[16px] h-[16px] rounded-full border-4 border-[#0b0f19] bg-teal-500 transform md:-translate-x-1/2 top-1.5 shadow-md shadow-teal-500/30 z-10"></div>
                                         
                                         {/* Timeline Date Pill (Desktop) */}
-                                        <div className={`hidden md:block absolute top-1.5 text-sm font-bold font-mono tracking-wide px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 ${
+                                        <div className={`hidden md:block absolute top-1.5 text-sm font-bold font-mono tracking-wide px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 ${
                                             isLeft ? "left-[53%]" : "right-[53%]"
                                         }`}>
                                             {item.date}
                                         </div>
 
                                         {/* Card Wrapper */}
-                                        <div className={`w-full md:w-[45%] rounded-2xl p-6 glass-card border border-gray-200/50 dark:border-gray-800/50 relative hover:border-teal-500/40 dark:hover:border-teal-500/30 transition-colors`}>
+                                        <div className={`w-full md:w-[45%] rounded-2xl p-6 glass-card border border-gray-800/50 relative hover:border-teal-500/30 transition-colors`}>
                                             {/* Date Pill (Mobile) */}
-                                            <div className="inline-block md:hidden text-xs font-bold font-mono px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 mb-3">
+                                            <div className="inline-block md:hidden text-xs font-bold font-mono px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 mb-3">
                                                 {item.date}
                                             </div>
                                             
-                                            <h3 className="text-xl font-bold font-display text-gray-900 dark:text-white leading-snug">{item.title}</h3>
-                                            <h4 className="text-sm font-semibold text-teal-600 dark:text-teal-400 mt-1 mb-4">{item.subtitle}</h4>
+                                            <h3 className="text-xl font-bold font-display text-white leading-snug">{item.title}</h3>
+                                            <h4 className="text-sm font-semibold text-teal-400 mt-1 mb-4">{item.subtitle}</h4>
                                             
-                                            <ul className="space-y-2 text-sm text-gray-700 dark:text-gray-300 list-disc pl-4 leading-relaxed">
+                                            <ul className="space-y-2 text-sm text-gray-300 list-disc pl-4 leading-relaxed">
                                                 {item.description.map((desc, dIdx) => (
                                                     <li key={dIdx}>{desc}</li>
                                                 ))}
@@ -749,8 +749,8 @@ export default function Home() {
             <section id="sertifikat" className="py-24 relative">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="flex flex-col items-start mb-16" data-aos="fade-up">
-                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase">05 / Sertifikasi</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-gray-900 dark:text-white">Sertifikasi Resmi</h2>
+                        <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">05 / Sertifikasi</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-white">Sertifikasi Resmi</h2>
                         <div className="h-1 w-20 bg-gradient-to-r from-teal-500 to-cyan-500 mt-4 rounded-full"></div>
                     </div>
 
@@ -758,11 +758,11 @@ export default function Home() {
                         {myData.certificates.map((cert, idx) => (
                             <div 
                                 key={idx} 
-                                className="glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row border border-gray-200/50 dark:border-gray-800/50 group hover:border-teal-500/30 transition-all duration-300"
+                                className="glass-card rounded-2xl overflow-hidden flex flex-col md:flex-row border border-gray-800/50 group hover:border-teal-500/30 transition-all duration-300"
                                 data-aos="fade-up"
                                 data-aos-delay={idx * 100}
                             >
-                                <div className="relative w-full md:w-44 h-48 md:h-auto shrink-0 bg-gray-100 dark:bg-gray-800">
+                                <div className="relative w-full md:w-44 h-48 md:h-auto shrink-0 bg-gray-800">
                                     <Image 
                                         src={cert.image} 
                                         alt={cert.name} 
@@ -774,11 +774,11 @@ export default function Home() {
                                 <div className="p-6 flex flex-col justify-between space-y-4">
                                     <div className="space-y-2">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-xs font-semibold text-teal-600 dark:text-teal-400 uppercase tracking-wide">{cert.issuer}</span>
-                                            <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{cert.year}</span>
+                                            <span className="text-xs font-semibold text-teal-400 uppercase tracking-wide">{cert.issuer}</span>
+                                            <span className="text-xs font-bold text-gray-300">{cert.year}</span>
                                         </div>
-                                        <h3 className="text-lg font-bold font-display text-gray-900 dark:text-white leading-tight">{cert.name}</h3>
-                                        <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3">{cert.description}</p>
+                                        <h3 className="text-lg font-bold font-display text-white leading-tight">{cert.name}</h3>
+                                        <p className="text-xs text-gray-300 leading-relaxed line-clamp-3">{cert.description}</p>
                                     </div>
                                     
                                     {cert.link && (
@@ -787,7 +787,7 @@ export default function Home() {
                                                 href={cert.link} 
                                                 target="_blank" 
                                                 rel="noopener noreferrer" 
-                                                className="inline-flex items-center gap-1 text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline cursor-pointer"
+                                                className="inline-flex items-center gap-1 text-xs font-bold text-teal-400 hover:underline cursor-pointer"
                                             >
                                                 Verifikasi Kredensial
                                                 <LuArrowUpRight size={12} />
@@ -802,11 +802,11 @@ export default function Home() {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="py-24 bg-gray-500/5 border-t border-gray-200/20 dark:border-gray-800/20 relative">
+            <section id="contact" className="py-24 bg-gray-500/5 border-t border-gray-800/20 relative">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="flex flex-col items-start mb-16" data-aos="fade-up">
-                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-widest uppercase">06 / Hubungi Saya</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-gray-900 dark:text-white">Mari Berkolaborasi</h2>
+                        <span className="text-xs font-bold text-teal-400 tracking-widest uppercase">06 / Hubungi Saya</span>
+                        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display mt-2 text-white">Mari Berkolaborasi</h2>
                         <div className="h-1 w-20 bg-gradient-to-r from-teal-500 to-cyan-500 mt-4 rounded-full"></div>
                     </div>
 
@@ -814,8 +814,8 @@ export default function Home() {
                         {/* Info Column */}
                         <div className="lg:col-span-5 flex flex-col justify-between space-y-8" data-aos="fade-right">
                             <div className="space-y-4">
-                                <h3 className="text-2xl font-bold font-display text-gray-900 dark:text-white">Ada tawaran menarik? Silakan kontak saya.</h3>
-                                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                <h3 className="text-2xl font-bold font-display text-white">Ada tawaran menarik? Silakan kontak saya.</h3>
+                                <p className="text-gray-300 leading-relaxed">
                                     Saya terbuka untuk diskusi seputar proyek Machine Learning, implementasi RAG & LLM chatbot, pengembangan aplikasi web fullstack, atau kesempatan berkarir secara penuh/kontrak. Silakan hubungi saya melalui form atau informasi kontak berikut.
                                 </p>
                             </div>
@@ -826,8 +826,8 @@ export default function Home() {
                                         <LuMail size={20} />
                                     </div>
                                     <div>
-                                        <span className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Kirim Email</span>
-                                        <a href={`mailto:${myData.email}`} className="text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">{myData.email}</a>
+                                        <span className="block text-xs font-bold text-gray-300 uppercase">Kirim Email</span>
+                                        <a href={`mailto:${myData.email}`} className="text-sm font-semibold text-gray-200 hover:text-teal-400 transition-colors">{myData.email}</a>
                                     </div>
                                 </li>
                                 <li className="flex items-center gap-4">
@@ -835,8 +835,8 @@ export default function Home() {
                                         <LuPhone size={20} />
                                     </div>
                                     <div>
-                                        <span className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Telepon / WhatsApp</span>
-                                        <a href={`tel:${myData.phone.replace(/\s+/g, '')}`} className="text-sm font-semibold text-gray-800 dark:text-gray-200 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">{myData.phone}</a>
+                                        <span className="block text-xs font-bold text-gray-300 uppercase">Telepon / WhatsApp</span>
+                                        <a href={`tel:${myData.phone.replace(/\s+/g, '')}`} className="text-sm font-semibold text-gray-200 hover:text-teal-400 transition-colors">{myData.phone}</a>
                                     </div>
                                 </li>
                                 <li className="flex items-center gap-4">
@@ -844,8 +844,8 @@ export default function Home() {
                                         <LuMapPin size={20} />
                                     </div>
                                     <div>
-                                        <span className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Lokasi Saat Ini</span>
-                                        <address className="text-sm font-semibold not-italic text-gray-800 dark:text-gray-200">Cirebon / Jakarta, Indonesia</address>
+                                        <span className="block text-xs font-bold text-gray-300 uppercase">Lokasi Saat Ini</span>
+                                        <address className="text-sm font-semibold not-italic text-gray-200">Cirebon / Jakarta, Indonesia</address>
                                     </div>
                                 </li>
                             </ul>
@@ -869,15 +869,15 @@ export default function Home() {
                                         className={`block w-full px-4 py-4 text-sm bg-transparent rounded-xl border appearance-none focus:outline-none focus:ring-0 peer ${
                                             formErrors.name 
                                                 ? "border-red-500 focus:border-red-500 text-red-500" 
-                                                : "border-gray-200 dark:border-gray-800 focus:border-teal-500 dark:focus:border-teal-400 text-gray-900 dark:text-white"
+                                                : "border-gray-800 focus:border-teal-400 text-white"
                                         }`}
                                     />
                                     <label 
                                         htmlFor="formName" 
-                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
+                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] peer-focus:bg-[#0b0f19] peer-not-placeholder-shown:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
                                             formErrors.name 
                                                 ? "text-red-500" 
-                                                : "text-gray-600 dark:text-gray-400 peer-focus:text-teal-600 dark:peer-focus:text-teal-400"
+                                                : "text-gray-400 peer-focus:text-teal-400"
                                         }`}
                                     >
                                         Nama Lengkap
@@ -903,15 +903,15 @@ export default function Home() {
                                         className={`block w-full px-4 py-4 text-sm bg-transparent rounded-xl border appearance-none focus:outline-none focus:ring-0 peer ${
                                             formErrors.email 
                                                 ? "border-red-500 focus:border-red-500 text-red-500" 
-                                                : "border-gray-200 dark:border-gray-800 focus:border-teal-500 dark:focus:border-teal-400 text-gray-900 dark:text-white"
+                                                : "border-gray-800 focus:border-teal-400 text-white"
                                         }`}
                                     />
                                     <label 
                                         htmlFor="formEmail" 
-                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
+                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] peer-focus:bg-[#0b0f19] peer-not-placeholder-shown:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
                                             formErrors.email 
                                                 ? "text-red-500" 
-                                                : "text-gray-600 dark:text-gray-400 peer-focus:text-teal-600 dark:peer-focus:text-teal-400"
+                                                : "text-gray-400 peer-focus:text-teal-400"
                                         }`}
                                     >
                                         Alamat Email
@@ -937,15 +937,15 @@ export default function Home() {
                                         className={`block w-full px-4 py-4 text-sm bg-transparent rounded-xl border appearance-none focus:outline-none focus:ring-0 peer ${
                                             formErrors.subject 
                                                 ? "border-red-500 focus:border-red-500 text-red-500" 
-                                                : "border-gray-200 dark:border-gray-800 focus:border-teal-500 dark:focus:border-teal-400 text-gray-900 dark:text-white"
+                                                : "border-gray-800 focus:border-teal-400 text-white"
                                         }`}
                                     />
                                     <label 
                                         htmlFor="formSubject" 
-                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
+                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] peer-focus:bg-[#0b0f19] peer-not-placeholder-shown:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
                                             formErrors.subject 
                                                 ? "text-red-500" 
-                                                : "text-gray-600 dark:text-gray-400 peer-focus:text-teal-600 dark:peer-focus:text-teal-400"
+                                                : "text-gray-400 peer-focus:text-teal-400"
                                         }`}
                                     >
                                         Subjek Pesan
@@ -971,15 +971,15 @@ export default function Home() {
                                         className={`block w-full px-4 py-4 text-sm bg-transparent rounded-xl border appearance-none focus:outline-none focus:ring-0 peer resize-y min-h-[120px] ${
                                             formErrors.message 
                                                 ? "border-red-500 focus:border-red-500 text-red-500" 
-                                                : "border-gray-200 dark:border-gray-800 focus:border-teal-500 dark:focus:border-teal-400 text-gray-900 dark:text-white"
+                                                : "border-gray-800 focus:border-teal-400 text-white"
                                         }`}
                                     ></textarea>
                                     <label 
                                         htmlFor="formMessage" 
-                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
+                                        className={`absolute text-sm duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] peer-focus:bg-[#0b0f19] peer-not-placeholder-shown:bg-[#0b0f19] px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-3 ${
                                             formErrors.message 
                                                 ? "text-red-500" 
-                                                : "text-gray-600 dark:text-gray-400 peer-focus:text-teal-600 dark:peer-focus:text-teal-400"
+                                                : "text-gray-400 peer-focus:text-teal-400"
                                         }`}
                                     >
                                         Isi Pesan Anda
@@ -1030,7 +1030,7 @@ export default function Home() {
                 toast.show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
             }`} role="alert">
                 <LuCircleCheck size={22} className="text-teal-500 shrink-0" />
-                <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">{toast.message}</span>
+                <span className="text-sm font-semibold text-gray-200">{toast.message}</span>
             </div>
         </div>
     );
