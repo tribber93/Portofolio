@@ -1,23 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// import ThemeToggle from "./ThemeToggle";
+
+const sections = [
+    { id: "hero", label: "Beranda" },
+    { id: "about", label: "Tentang" },
+    { id: "skill", label: "Skill" },
+    { id: "proyek", label: "Proyek" },
+    { id: "history", label: "Riwayat" },
+    { id: "sertifikat", label: "Sertifikat" },
+    { id: "contact", label: "Kontak" },
+];
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("hero");
 
-    const sections = [
-        { id: "hero", label: "Beranda" },
-        { id: "pengalaman", label: "Pengalaman" },
-        { id: "pendidikan", label: "Pendidikan" },
-        { id: "organisasi", label: "Organisasi" },
-        { id: "proyek", label: "Proyek" },
-        { id: "sertifikat", label: "Sertifikat" },
-        { id: "skill", label: "Skill" },
-    ];
-
     useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 20) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -26,74 +34,88 @@ export default function Navbar() {
                     }
                 });
             },
-            { threshold: 0.6 }
+            { threshold: 0.2, rootMargin: "-80px 0px -40% 0px" }
         );
+
+        window.addEventListener("scroll", handleScroll);
 
         sections.forEach(({ id }) => {
             const section = document.getElementById(id);
             if (section) observer.observe(section);
         });
 
-        return () => observer.disconnect();
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            observer.disconnect();
+        };
     }, []);
 
     return (
-        <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        Yoni Tribber
-                    </span>
+        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            scrolled 
+                ? "bg-white/80 dark:bg-[#0b0f19]/80 backdrop-blur-md shadow-sm border-b border-gray-200/30 dark:border-gray-800/30 py-3" 
+                : "bg-transparent py-5"
+        }`}>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+                <a href="#hero" className="text-xl md:text-2xl font-bold tracking-tight font-display hover:opacity-90 transition-opacity">
+                    <span className="gradient-text">Yoni</span><span className="text-gray-900 dark:text-white">.T</span>
                 </a>
 
-                <div className="flex items-center md:order-2 gap-2">
-                    {/* <ThemeToggle /> */}
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center space-x-1">
+                    {sections.map(({ id, label }) => (
+                        <a
+                            key={id}
+                            href={`#${id}`}
+                            className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all duration-300 relative group ${
+                                activeSection === id
+                                    ? "text-teal-600 dark:text-teal-400 font-semibold"
+                                    : "text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400"
+                            }`}
+                        >
+                            {label}
+                            {activeSection === id && (
+                                <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full" />
+                            )}
+                        </a>
+                    ))}
+                </nav>
+
+                <div className="flex items-center gap-4">
+                    {/* Mobile Toggle Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700"
-                        aria-label="Toggle navigation"
+                        className="flex flex-col justify-between w-6 h-5 md:hidden cursor-pointer focus:outline-none"
+                        aria-label="Toggle navigation menu"
                     >
-                        <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
+                        <span className={`h-0.5 w-full bg-gray-700 dark:bg-gray-300 rounded-full transition-transform duration-300 origin-left ${isOpen ? "rotate-45 translate-x-1 -translate-y-0.5" : ""}`}></span>
+                        <span className={`h-0.5 w-full bg-gray-700 dark:bg-gray-300 rounded-full transition-opacity duration-300 ${isOpen ? "opacity-0" : ""}`}></span>
+                        <span className={`h-0.5 w-full bg-gray-700 dark:bg-gray-300 rounded-full transition-transform duration-300 origin-left ${isOpen ? "-rotate-45 translate-x-1 translate-y-0.5" : ""}`}></span>
                     </button>
                 </div>
-
-                <div
-                    className={`${isOpen ? "block" : "hidden"
-                        } w-full md:flex md:w-auto md:order-1`}
-                    id="navbar-sticky"
-                >
-                    <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        {sections.map(({ id, label }) => (
-                            <li key={id}>
-                                <a
-                                    href={`#${id}`}
-                                    className={`block py-2 px-3 rounded-sm md:p-0 transition-colors duration-300
-                    ${activeSection === id
-                                            ? "text-white bg-teal-700 md:bg-transparent md:text-teal-700 md:dark:text-teal-500"
-                                            : "text-gray-900 dark:text-white hover:text-teal-700 dark:hover:text-teal-400"
-                                        }`}
-                                    aria-current={activeSection === id ? "page" : undefined}
-                                >
-                                    {label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
             </div>
-        </nav>
+
+            {/* Mobile Menu */}
+            <div className={`md:hidden absolute top-full left-0 right-0 border-b border-gray-200/50 dark:border-gray-800/50 bg-white/95 dark:bg-[#0b0f19]/95 backdrop-blur-lg transition-all duration-300 overflow-hidden ${
+                isOpen ? "max-h-screen opacity-100 py-6" : "max-h-0 opacity-0 py-0"
+            }`}>
+                <nav className="flex flex-col px-6 space-y-4">
+                    {sections.map(({ id, label }) => (
+                        <a
+                            key={id}
+                            href={`#${id}`}
+                            onClick={() => setIsOpen(false)}
+                            className={`py-2 text-base font-medium transition-colors duration-300 ${
+                                activeSection === id
+                                    ? "text-teal-600 dark:text-teal-400 font-semibold pl-2 border-l-2 border-teal-500"
+                                    : "text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400"
+                            }`}
+                        >
+                            {label}
+                        </a>
+                    ))}
+                </nav>
+            </div>
+        </header>
     );
 }

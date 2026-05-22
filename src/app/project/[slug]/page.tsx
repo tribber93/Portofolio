@@ -3,7 +3,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import Footer from "../../components/footer";
+import Footer from "../../components/Footer";
 import projects from "../../data/projectsData.json";
 import ProfileCard from "@/app/components/cards";
 import Image from "next/image";
@@ -76,13 +76,13 @@ export default async function DetailProjectPage({ params }: Props) {
     return (
         <>
             {/* Breadcrumb */}
-            <nav className="fixed top-0 left-0 right-0 bg-gray-800 border-b border-gray-700 px-6 py-4 z-50">
-                <div className="max-w-6xl mx-auto flex items-center space-x-2 text-sm text-gray-400">
-                    <Link href="/" className="hover:text-teal-400">Beranda</Link>
-                    <span>/</span>
-                    <Link href="/#projects" className="hover:text-teal-400">Projects</Link>
-                    <span>/</span>
-                    <span className="text-white">{project.title}</span>
+            <nav className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-[#0b0f19]/80 border-b border-gray-200/50 dark:border-gray-800/50 backdrop-blur-md px-6 py-4 z-50">
+                <div className="max-w-6xl mx-auto flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-300">
+                    <Link href="/" className="hover:text-teal-600 dark:hover:text-teal-400 font-medium">Beranda</Link>
+                    <span className="text-gray-400 dark:text-gray-600">/</span>
+                    <Link href="/#proyek" className="hover:text-teal-600 dark:hover:text-teal-400 font-medium">Proyek</Link>
+                    <span className="text-gray-400 dark:text-gray-600">/</span>
+                    <span className="text-gray-900 dark:text-white font-semibold">{project.title}</span>
                 </div>
             </nav>
 
@@ -90,9 +90,9 @@ export default async function DetailProjectPage({ params }: Props) {
                 <div className="flex flex-col md:flex-row md:space-x-8">
                     {/* Konten utama */}
                     <section className="flex-1">
-                        <h1 className="text-3xl font-bold mb-2">{project.title}</h1>
-                        <p className="text-gray-400 mb-1">Kategori: {project.category}</p>
-                        <p className="text-gray-400 mb-6">Date: {project.date}</p>
+                        <h1 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">{project.title}</h1>
+                        <p className="text-gray-700 dark:text-gray-300 mb-1">Kategori: {project.category}</p>
+                        <p className="text-gray-600 dark:text-gray-300 mb-6">Date: {project.date}</p>
 
                         {project.image && (
                             <div className="relative w-full h-100 rounded-lg overflow-hidden mb-6">

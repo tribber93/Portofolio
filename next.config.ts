@@ -4,9 +4,16 @@ const nextConfig: NextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
-      new URL('https://via.placeholder.com/**'),
-      new URL('https://placehold.co/**'),
-
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/**",
+      },
     ],
   },
 };
