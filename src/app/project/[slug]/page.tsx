@@ -314,7 +314,7 @@ export default async function DetailProjectPage({ params }: Props) {
                                             if (isBadge) {
                                                 return (
                                                     // eslint-disable-next-line @next/next/no-img-element
-                                                    <img className="h-[56px] w-auto inline-block hover:opacity-95 transition-opacity my-4" alt={alt || "Project Image"} {...props} />
+                                                    <img className="h-[46px] sm:h-[54px] max-w-full w-auto inline-block hover:opacity-95 transition-opacity my-2 object-contain" alt={alt || "Project Image"} {...props} />
                                                 );
                                             }
                                             return (
@@ -351,28 +351,37 @@ export default async function DetailProjectPage({ params }: Props) {
                                             }
 
                                             const isYoutube = typeof src === "string" && (src.includes("youtube.com") || src.includes("youtu.be"));
-                                            if (isYoutube) {
-                                                const isShort = typeof props.src === "string" && (props.src.includes("/shorts/") || props.className?.includes("short"));
-                                                if (isShort) {
-                                                    return (
-                                                        <div className="flex justify-center my-8">
-                                                            <div className="w-full max-w-[315px] aspect-[9/16] rounded-3xl overflow-hidden border border-gray-800/80 shadow-2xl shadow-teal-950/20 hover:border-teal-500/30 transition-all duration-500 transform hover:scale-[1.01]">
-                                                                <iframe
-                                                                    src={src}
-                                                                    className="w-full h-full"
-                                                                    title={props.title || "YouTube Shorts Player"}
-                                                                    frameBorder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowFullScreen
-                                                                />
-                                                            </div>
+                                            const widthVal = parseInt(String(props.width || ""));
+                                            const heightVal = parseInt(String(props.height || ""));
+                                            const isVertical = (widthVal && heightVal && heightVal > widthVal) || 
+                                                               (typeof props.src === "string" && (props.src.includes("/shorts/") || props.src.includes("O2S1L_jSC8o"))) || 
+                                                               props.className?.includes("short");
+
+                                            // Strip out hardcoded width/height to let the container control responsiveness
+                                            const { width: _w, height: _h, ...cleanProps } = props;
+                                            void _w;
+                                            void _h;
+
+                                            if (isYoutube && isVertical) {
+                                                return (
+                                                    <div className="flex justify-center my-6">
+                                                        <div className="w-full max-w-[280px] sm:max-w-[315px] aspect-[9/16] rounded-3xl overflow-hidden border border-gray-800/80 shadow-2xl shadow-teal-950/20 hover:border-teal-500/30 transition-all duration-500 transform hover:scale-[1.01]">
+                                                            <iframe
+                                                                src={src}
+                                                                className="w-full h-full"
+                                                                title={props.title || "YouTube Shorts Player"}
+                                                                frameBorder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowFullScreen
+                                                                {...cleanProps}
+                                                            />
                                                         </div>
-                                                    );
-                                                }
+                                                    </div>
+                                                );
                                             }
 
                                             return (
-                                                <div className="overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl my-8 aspect-video">
+                                                <div className="overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl my-8 aspect-video w-full">
                                                     <iframe
                                                         src={src}
                                                         className="w-full h-full"
@@ -380,6 +389,7 @@ export default async function DetailProjectPage({ params }: Props) {
                                                         frameBorder="0"
                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                         allowFullScreen
+                                                        {...cleanProps}
                                                     />
                                                 </div>
                                             );

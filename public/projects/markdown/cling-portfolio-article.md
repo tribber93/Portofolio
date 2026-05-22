@@ -1,9 +1,21 @@
 # Cling — AI Video Background Remover
 ## AI-Based Android Application Development Case Study
+<div align="center" style="margin: 16px 0;">
+  <a href="https://play.google.com/store/apps/details?id=com.yotriv.cling" target="_blank" rel="noopener noreferrer">
+    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
+  </a>
+</div>
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.yotriv.cling)
-
-<iframe src="https://youtube.com/shorts/O2S1L_jSC8o?feature=share" title="Cling AI Demo Video"></iframe>
+<div align="center">
+  <iframe 
+    width="315"
+    height="560"
+    src="https://www.youtube.com/embed/O2S1L_jSC8o"
+    title="Cling AI Demo Video"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
 
 ## About the Project
 
