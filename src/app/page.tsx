@@ -3,9 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
 import { 
     LuArrowUpRight, 
     LuGithub, 
@@ -16,14 +13,12 @@ import {
     LuLayoutGrid, 
     LuDatabase, 
     LuEye, 
-    LuX, 
     LuMail, 
     LuMapPin, 
     LuPhone, 
     LuSend, 
     LuCircleCheck,
-    LuArrowUp,
-    LuExternalLink
+    LuArrowUp
 } from "react-icons/lu";
 
 import {
@@ -43,16 +38,6 @@ import {
 
 import myData from "@/app/data/myData.json";
 import projectsData from "@/app/data/projectsData.json";
-
-interface Project {
-    title: string;
-    category: string;
-    image: string;
-    date: string;
-    summary: string;
-    content: string;
-    slug: string;
-}
 
 const roles = ["Data Scientist", "Machine Learning Engineer", "AI Developer"];
 
@@ -97,36 +82,25 @@ export default function Home() {
         return () => window.removeEventListener("scroll", handleScrollVisibility);
     }, []);
 
+    // Handle hash scroll on initial load (e.g. when navigating from project detail page)
+    useEffect(() => {
+        if (window.location.hash) {
+            const hash = window.location.hash.substring(1);
+            setTimeout(() => {
+                const element = document.getElementById(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 300);
+        }
+    }, []);
+
     // Project filtering
     const categories = ["Semua", "AI/Data/ML", "Web", "Mobile"];
     const [selectedCategory, setSelectedCategory] = useState("Semua");
     const filteredProjects = selectedCategory === "Semua" 
         ? projectsData 
         : projectsData.filter(p => p.category === selectedCategory);
-
-    // Modal details
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-    const [modalContent, setModalContent] = useState("");
-    const [modalLoading, setModalLoading] = useState(false);
-
-    useEffect(() => {
-        if (!selectedProject) return;
-        setModalLoading(true);
-        fetch(selectedProject.content)
-            .then((res) => {
-                if (!res.ok) throw new Error("Failed to load markdown content");
-                return res.text();
-            })
-            .then((text) => {
-                setModalContent(text);
-                setModalLoading(false);
-            })
-            .catch((err) => {
-                console.error(err);
-                setModalContent("Konten tidak tersedia untuk saat ini.");
-                setModalLoading(false);
-            });
-    }, [selectedProject]);
 
     // Form inputs and validation
     const [formName, setFormName] = useState("");
@@ -531,7 +505,7 @@ export default function Home() {
 
                     {/* Grid of Projects */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up">
-                        {filteredProjects.map((project) => (
+                        {filteredProjects.slice(0, 3).map((project) => (
                             <article 
                                 key={project.slug} 
                                 className="glass-card rounded-2xl overflow-hidden group flex flex-col justify-between hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 hover:-translate-y-1"
@@ -547,13 +521,13 @@ export default function Home() {
                                             className="group-hover:scale-105 transition-transform duration-500"
                                         />
                                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                                            <button 
-                                                onClick={() => setSelectedProject(project)}
+                                            <Link 
+                                                href={`/project/${project.slug}`}
                                                 className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-gray-900 shadow-lg hover:scale-110 transition-transform cursor-pointer"
                                                 aria-label="Tinjau detail proyek"
                                             >
                                                 <LuEye size={20} />
-                                            </button>
+                                            </Link>
                                         </div>
                                     </div>
                                     
@@ -562,11 +536,10 @@ export default function Home() {
                                         <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-400 uppercase tracking-wide">
                                             {project.category}
                                         </span>
-                                        <h3 
-                                            onClick={() => setSelectedProject(project)}
-                                            className="text-xl font-bold text-white font-display line-clamp-1 hover:text-teal-400 transition-colors cursor-pointer"
-                                        >
-                                            {project.title}
+                                        <h3 className="text-xl font-bold text-white font-display line-clamp-1 hover:text-teal-400 transition-colors cursor-pointer">
+                                            <Link href={`/project/${project.slug}`}>
+                                                {project.title}
+                                            </Link>
                                         </h3>
                                         <p className="text-sm text-gray-300 line-clamp-3 leading-relaxed">
                                             {project.summary}
@@ -576,115 +549,30 @@ export default function Home() {
 
                                 <div className="p-6 pt-0 flex justify-between items-center">
                                     <span className="text-xs text-gray-300 font-medium font-mono">{project.date}</span>
-                                    <button 
-                                        onClick={() => setSelectedProject(project)}
+                                    <Link 
+                                        href={`/project/${project.slug}`}
                                         className="text-sm font-bold text-teal-400 hover:text-teal-300 flex items-center gap-1 cursor-pointer transition-colors group/btn"
                                     >
                                         Detail Proyek
                                         <LuArrowUpRight className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                                    </button>
+                                    </Link>
                                 </div>
                             </article>
                         ))}
                     </div>
-                </div>
-            </section>
 
-            {/* Project Details Modal */}
-            {selectedProject && (
-                <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
-                    {/* Backdrop */}
-                    <div 
-                        onClick={() => setSelectedProject(null)} 
-                        className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
-                    ></div>
-                    
-                    {/* Modal Content Card */}
-                    <div className="relative w-full max-w-4xl bg-[#0b0f19] border border-gray-800/50 rounded-2xl shadow-2xl overflow-hidden z-10 max-h-[85vh] flex flex-col">
-                        
-                        {/* Header */}
-                        <div className="p-6 border-b border-gray-800/30 flex items-center justify-between">
-                            <div>
-                                <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-400 uppercase tracking-wide mb-1">
-                                    {selectedProject.category}
-                                </span>
-                                <h3 className="text-2xl font-bold font-display text-white leading-tight">
-                                    {selectedProject.title}
-                                </h3>
-                            </div>
-                            <button 
-                                onClick={() => setSelectedProject(null)}
-                                className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-800 text-gray-300 transition-colors cursor-pointer"
-                                aria-label="Tutup detail modal"
-                            >
-                                <LuX size={20} />
-                            </button>
-                        </div>
-                        
-                        {/* Body scroll area */}
-                        <div className="p-6 md:p-8 overflow-y-auto flex-1 space-y-6">
-                            {/* Project Banner Image */}
-                            <div className="relative w-full h-80 rounded-xl overflow-hidden bg-gray-800">
-                                <Image 
-                                    src={selectedProject.image} 
-                                    alt={selectedProject.title} 
-                                    fill 
-                                    style={{ objectFit: "cover" }}
-                                />
-                            </div>
-
-                            {/* Info grid */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-xl bg-gray-500/5 text-sm">
-                                <div>
-                                    <span className="block text-xs text-gray-300 font-semibold uppercase">Kategori</span>
-                                    <span className="font-semibold text-gray-200">{selectedProject.category}</span>
-                                </div>
-                                <div>
-                                    <span className="block text-xs text-gray-300 font-semibold uppercase">Durasi Proyek</span>
-                                    <span className="font-semibold text-gray-200">{selectedProject.date}</span>
-                                </div>
-                                <div>
-                                    <span className="block text-xs text-gray-300 font-semibold uppercase">Penulis</span>
-                                    <span className="font-semibold text-gray-200">Yoni Tribber</span>
-                                </div>
-                                <div className="flex items-center md:justify-end">
-                                    <Link 
-                                        href={`/project/${selectedProject.slug}`} 
-                                        className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-400 hover:underline"
-                                    >
-                                        Halaman Penuh
-                                        <LuExternalLink size={14} />
-                                    </Link>
-                                </div>
-                            </div>
-
-                            {/* Markdown Render */}
-                            <div className="prose prose-invert max-w-none markdown pt-2 text-gray-300">
-                                {modalLoading ? (
-                                    <div className="flex flex-col items-center justify-center py-12 space-y-3">
-                                        <div className="w-8 h-8 rounded-full border-2 border-teal-500 border-t-transparent animate-spin"></div>
-                                        <span className="text-sm font-semibold text-gray-300">Memuat rincian proyek...</span>
-                                    </div>
-                                ) : (
-                                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                                        {modalContent}
-                                    </ReactMarkdown>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Footer details button */}
-                        <div className="p-4 border-t border-gray-800/30 bg-gray-500/5 flex justify-end">
-                            <button 
-                                onClick={() => setSelectedProject(null)}
-                                className="px-5 py-2.5 rounded-xl text-sm font-bold bg-gray-800 hover:bg-gray-700 text-gray-200 transition-colors cursor-pointer"
-                            >
-                                Tutup
-                            </button>
-                        </div>
+                    {/* View All Projects Button */}
+                    <div className="flex justify-center mt-12" data-aos="fade-up">
+                        <Link 
+                            href="/project" 
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-teal-500/10 hover:-translate-y-0.5 group cursor-pointer"
+                        >
+                            Lihat Semua Proyek
+                            <LuArrowUpRight className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </Link>
                     </div>
                 </div>
-            )}
+            </section>
 
             {/* Experience & Education Timeline */}
             <section id="history" className="py-24 bg-gray-500/5 border-y border-gray-800/20 relative">

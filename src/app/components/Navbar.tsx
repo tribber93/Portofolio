@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const sections = [
     { id: "hero", label: "Beranda" },
@@ -13,9 +15,25 @@ const sections = [
 ];
 
 export default function Navbar() {
+    const pathname = usePathname();
+    const isHome = pathname === "/";
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("hero");
+
+    const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        if (isHome) {
+            e.preventDefault();
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+                setActiveSection(id);
+                setIsOpen(false);
+            }
+        } else {
+            setIsOpen(false);
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -57,16 +75,21 @@ export default function Navbar() {
                 : "bg-transparent py-5"
         }`}>
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-                <a href="#hero" className="text-xl md:text-2xl font-bold tracking-tight font-display hover:opacity-90 transition-opacity">
+                <Link 
+                    href={isHome ? "#hero" : "/#hero"} 
+                    onClick={(e) => handleScrollTo(e, "hero")}
+                    className="text-xl md:text-2xl font-bold tracking-tight font-display hover:opacity-90 transition-opacity"
+                >
                     <span className="gradient-text">Yoni</span><span className="text-gray-900 dark:text-white">.T</span>
-                </a>
+                </Link>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center space-x-1">
                     {sections.map(({ id, label }) => (
-                        <a
+                        <Link
                             key={id}
-                            href={`#${id}`}
+                            href={isHome ? `#${id}` : `/#${id}`}
+                            onClick={(e) => handleScrollTo(e, id)}
                             className={`px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all duration-300 relative group ${
                                 activeSection === id
                                     ? "text-teal-600 dark:text-teal-400 font-semibold"
@@ -77,7 +100,7 @@ export default function Navbar() {
                             {activeSection === id && (
                                 <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full" />
                             )}
-                        </a>
+                        </Link>
                     ))}
                 </nav>
 
@@ -101,10 +124,10 @@ export default function Navbar() {
             }`}>
                 <nav className="flex flex-col px-6 space-y-4">
                     {sections.map(({ id, label }) => (
-                        <a
+                        <Link
                             key={id}
-                            href={`#${id}`}
-                            onClick={() => setIsOpen(false)}
+                            href={isHome ? `#${id}` : `/#${id}`}
+                            onClick={(e) => handleScrollTo(e, id)}
                             className={`py-2 text-base font-medium transition-colors duration-300 ${
                                 activeSection === id
                                     ? "text-teal-600 dark:text-teal-400 font-semibold pl-2 border-l-2 border-teal-500"
@@ -112,7 +135,7 @@ export default function Navbar() {
                             }`}
                         >
                             {label}
-                        </a>
+                        </Link>
                     ))}
                 </nav>
             </div>
