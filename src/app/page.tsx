@@ -224,9 +224,10 @@ export default function Home() {
             title: exp.title,
             subtitle: exp.company,
             date: exp.date,
+            ipk: null as string | null,
             description: Array.isArray(exp.description)
                 ? exp.description
-                : exp.description ? exp.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
+                : (exp.description as string || "").split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim())
         })),
         ...(myData.education || []).map(edu => {
             const description = Array.isArray(edu.description) ? [...edu.description] : [];
@@ -235,7 +236,7 @@ export default function Home() {
                 title: edu.degree,
                 subtitle: edu.institution,
                 date: edu.year,
-                ipk: edu.ipk !== "-" ? edu.ipk : null,
+                ipk: edu.ipk !== "-" ? edu.ipk : null as string | null,
                 description: description
             };
         }),
@@ -244,9 +245,10 @@ export default function Home() {
             title: org.role,
             subtitle: org.name,
             date: org.date,
+            ipk: null as string | null,
             description: Array.isArray(org.description)
                 ? org.description
-                : org.description ? org.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
+                : (org.description as string || "").split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim())
         }))
     ];
 

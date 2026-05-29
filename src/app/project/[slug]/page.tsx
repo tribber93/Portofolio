@@ -18,7 +18,6 @@ import {
     LuTag,
     LuBookmark,
     LuClock,
-    LuExternalLink,
     LuGithub,
     LuLayers,
     LuCpu,
