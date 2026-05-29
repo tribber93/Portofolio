@@ -8,19 +8,35 @@
             "title": "Assembly Division Intern",
             "company": "DAC Indonesia",
             "date": "Oct 2025 - Jan 2026",
-            "description": "● Assembled hardware (laptops) with high precision, ensuring all components were installed in compliance with standard operating procedures (SOPs).\n● Responsible for installing operating systems and required software, guaranteeing optimal device functionality prior to distribution.\n● Conducted comprehensive Quality Control (QC) on assembled devices to verify build quality and ensure deployment readiness."
+            "description": [
+                "Assembled hardware (laptops) with high precision, ensuring all components were installed in compliance with standard operating procedures (SOPs).",
+                "Responsible for installing operating systems and required software, guaranteeing optimal device functionality prior to distribution.",
+                "Conducted comprehensive Quality Control (QC) on assembled devices to verify build quality and ensure deployment readiness."
+            ]
         },
         {
             "title": "Machine Learning Engineer Intern",
             "company": "PT. Inti Utama Solusindo (Pharos Group)",
             "date": "Aug 2023 - Dec 2023",
-            "description": "● Developed a chatbot to assist researchers with quick, accurate information using data scraping to build a structured knowledge base.\n● Extracted and organized data from open-access health journals to support chatbot responses through RAG models with Langchain, integrating it with Django.\n● Collaborated with medical and data science teams to analyze chatbot interactions and refine performance.\n● Ensured relevant and up-to-date information in responses by regularly updating the knowledge base.\n● Applied AI and ML techniques like NLP and LLMs to improve response accuracy and reliability.\n● Used PostgreSQL for eficient database management and optimized query performance.\n● Used data analysis to track performance metrics and continuously enhance chatbot accuracy"
+            "description": [
+                "Developed a chatbot to assist researchers with quick, accurate information using data scraping to build a structured knowledge base.",
+                "Extracted and organized data from open-access health journals to support chatbot responses through RAG models with Langchain, integrating it with Django.",
+                "Collaborated with medical and data science teams to analyze chatbot interactions and refine performance.",
+                "Ensured relevant and up-to-date information in responses by regularly updating the knowledge base.",
+                "Applied AI and ML techniques like NLP and LLMs to improve response accuracy and reliability.",
+                "Used PostgreSQL for eficient database management and optimized query performance.",
+                "Used data analysis to track performance metrics and continuously enhance chatbot accuracy"
+            ]
         },
         {
             "title": "Machine Learning Cohort",
             "company": "Bangkit Academy",
             "date": "Jan 2023 - Jul 2023",
-            "description": ""
+            "description": [
+                "Completed intensive Machine Learning curriculum: TensorFlow, Deep Learning, and Cloud Computing.",
+                "Built a smart questionnaire recommendation capstone project (Quisiin) using deep learning.",
+                "Passed the Google TensorFlow Developer Certificate certification."
+            ]
         }
     ],
     "organizations": [
@@ -28,7 +44,11 @@
             "name": "Himpunan Mahasiswa Teknik Informatika (HIMATIF)",
             "role": "Vice Head of Research and Development (R&D) Division",
             "date": "2022",
-            "description": "● Collaborated with team members to develop resources and strategies for the organization's growth and development.\n● Assisted in organizing and conducting workshops, seminars, and training sessions for members.\n● Contributed to the planning and execution of events aimed at enhancing technical skills and knowledge."
+            "description": [
+                "Collaborated with team members to develop resources and strategies for the organization's growth and development.",
+                "Assisted in organizing and conducting workshops, seminars, and training sessions for members.",
+                "Contributed to the planning and execution of events aimed at enhancing technical skills and knowledge."
+            ]
         }
     ],
     "education": [
@@ -36,7 +56,12 @@
             "degree": "Bachelor of Informatics Engineering",
             "institution": "Universitas Catur Insan Cendekia",
             "year": "2020 - 2024",
-            "ipk": "3.81"
+            "ipk": "3.81",
+            "description": [
+                "Graduated with Honors.",
+                "Received the Best Thesis award in the Informatics Engineering program with a research focus on AI RAG.",
+                "Active in student organizations and technology development competitions."
+            ]
         }
     ],
     "certificates": [

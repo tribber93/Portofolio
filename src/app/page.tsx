@@ -224,21 +224,29 @@ export default function Home() {
             title: exp.title,
             subtitle: exp.company,
             date: exp.date,
-            description: exp.description ? exp.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
+            description: Array.isArray(exp.description)
+                ? exp.description
+                : exp.description ? exp.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
         })),
-        ...(myData.education || []).map(edu => ({
-            type: "education",
-            title: edu.degree,
-            subtitle: edu.institution,
-            date: edu.year,
-            description: edu.ipk && edu.ipk !== "-" ? [`GPA: ${edu.ipk}`] : []
-        })),
+        ...(myData.education || []).map(edu => {
+            const description = Array.isArray(edu.description) ? [...edu.description] : [];
+            return {
+                type: "education",
+                title: edu.degree,
+                subtitle: edu.institution,
+                date: edu.year,
+                ipk: edu.ipk !== "-" ? edu.ipk : null,
+                description: description
+            };
+        }),
         ...(myData.organizations || []).map(org => ({
             type: "org",
             title: org.role,
             subtitle: org.name,
             date: org.date,
-            description: org.description ? org.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
+            description: Array.isArray(org.description)
+                ? org.description
+                : org.description ? org.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
         }))
     ];
 
@@ -608,13 +616,23 @@ export default function Home() {
                                                 Organizations
                                             </span>
                                         )}
-                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1">
                                             <h3 className="text-xl font-bold font-display text-white leading-snug">{item.title}</h3>
                                             <span className="inline-block text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-400 self-start sm:self-auto shrink-0">
                                                 {item.date}
                                             </span>
                                         </div>
-                                        <h4 className="text-sm font-semibold text-teal-400 mb-4">{item.subtitle}</h4>
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <h4 className="text-sm font-semibold text-teal-400">{item.subtitle}</h4>
+                                            {item.type === "education" && item.ipk && (
+                                                <>
+                                                    <span className="w-1 h-1 rounded-full bg-gray-600"></span>
+                                                    <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                                                        GPA {item.ipk}
+                                                    </span>
+                                                </>
+                                            )}
+                                        </div>
 
                                         <ul className="space-y-2 text-sm text-gray-300 list-disc pl-4 leading-relaxed">
                                             {item.description.map((desc, dIdx) => (

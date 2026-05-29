@@ -6,7 +6,12 @@
         "date": "May 2026",
         "summary": "Iqraya is a modern Quran platform designed to guide and support your every recitation with the power of Artificial Intelligence (AI).",
         "content": "/projects/markdown/iqraya.md",
-        "slug": "iqraya"
+        "slug": "iqraya",
+        "urls": {
+            "website": "https://iqraya-web-871247671732.asia-southeast1.run.app/",
+            "github": "https://github.com/tribber93/Iqraya-App",
+            "youtube": "https://www.youtube.com/watch?v=85sKl7AZNTM"
+        }
     },
     {
         "title": "Cling — AI Video Background Remover",
@@ -15,7 +20,11 @@
         "date": "Mar 2026",
         "summary": "Cling is an AI-powered Android application designed to automatically remove backgrounds from photos and videos directly on the user's device. This application was developed to help content creators, online sellers, and general users create professional visuals without needing complex editing software.",
         "content": "/projects/markdown/cling-portfolio-article.md",
-        "slug": "cling"
+        "slug": "cling",
+        "urls": {
+            "playstore": "https://play.google.com/store/apps/details?id=com.yotriv.cling",
+            "youtube": "https://www.youtube.com/embed/O2S1L_jSC8o"
+        }
     },
     {
         "title": "Implementing an AI Chatbot for Enhanced Information Access with LLM and RAG",
@@ -24,7 +33,11 @@
         "date": "Feb 2024 - Jul 2024",
         "summary": "Development of an AI-based chatbot using the RAG method at Catur Insan Cendekia University to enhance fast and contextual information access.",
         "content": "/projects/markdown/ai-chatbot-rag-campus.md",
-        "slug": "ai-chatbot-rag-campus"
+        "slug": "ai-chatbot-rag-campus",
+        "urls": {
+            "github": "https://github.com/tribber93/chatbot-admin",
+            "journal": "http://www.seminar.iaii.or.id/index.php/SISFOTEK/article/view/560"
+        }
     },
     {
         "title": "AI Chatbot for Health Research using RAG and LLM",
@@ -42,7 +55,10 @@
         "date": "Dec 2024",
         "summary": "This project uses YOLOv11 to detect palm trees with numbered boxes and classify apples by color, saving cropped images accordingly.",
         "content": "/projects/markdown/image-detection-classification-yolov11.md",
-        "slug": "image-detection-classification-yolov11"
+        "slug": "image-detection-classification-yolov11",
+        "urls": {
+            "github": "https://github.com/tribber93/Image-Detection-and-Classification-with-YOLOv11"
+        }
     },
     {
         "title": "Trash Image Classification using Pre-trained Vision Transformer (ViT)",
@@ -51,7 +67,10 @@
         "date": "Jul 2023",
         "summary": "This project implements an image classification system using a pre-trained Vision Transformer (ViT) from Hugging Face, fine-tuned to classify waste images into six categories",
         "content": "/projects/markdown/trash-classification.md",
-        "slug": "trash-classification"
+        "slug": "trash-classification",
+        "urls": {
+            "github": "https://github.com/tribber93/Trash-Image-Classification-using-Pre-trained-Model-Vision-Transformer-ViT-"
+        }
     },
     {
         "title": "Quisiin: Questionnaire Marketplace",
@@ -60,7 +79,10 @@
         "date": "Jul 2023",
         "summary": "An App-Based Questionnaire Marketplace to Help Gather Data for Specific Targets.",
         "content": "/projects/markdown/quisiin-questionnaire-marketplace.md",
-        "slug": "quisiin-questionnaire-marketplace"
+        "slug": "quisiin-questionnaire-marketplace",
+        "urls": {
+            "github": "https://github.com/Bangkit-Capstone-C23-PC667/ML-Capstone-Project"
+        }
     },
     {
         "title": "Assetify: Know the Price, Make it Wise!",
@@ -69,7 +91,10 @@
         "date": "Jul 2023",
         "summary": "Assetify uses data and machine learning to accurately predict housing prices in Jakarta amid fluctuating market factors like location, facilities, and economic conditions.",
         "content": "/projects/markdown/assetify-prediction.md",
-        "slug": "assetify-prediction"
+        "slug": "assetify-prediction",
+        "urls": {
+            "github": "https://github.com/tribber93/Laskar_AI_CapstonProject"
+        }
     },
     {
         "title": "Implementation of Career Center Information System at UCIC",
@@ -87,7 +112,10 @@
         "date": "Jul 2023",
         "summary": "The Task Management App backend is a FastAPI-based, Dockerized API using JWT and Supabase for secure and scalable task and user management.",
         "content": "/projects/markdown/task-management-backend.md",
-        "slug": "task-management-backend"
+        "slug": "task-management-backend",
+        "urls": {
+            "github": "https://github.com/tribber93/Back-End_Task-Management-App"
+        }
     },
     {
         "title": "Photo Studio Booking App – QM Studio Photo",

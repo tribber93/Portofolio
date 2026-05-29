@@ -21,7 +21,12 @@ import {
     LuExternalLink,
     LuGithub,
     LuLayers,
-    LuCpu
+    LuCpu,
+    LuYoutube,
+    LuGlobe,
+    LuGamepad2,
+    LuBookOpen,
+    LuLink
 } from "react-icons/lu";
 
 type Props = {
@@ -89,7 +94,22 @@ export default async function DetailProjectPage({ params }: Props) {
     const readTime = Math.max(1, Math.ceil(textLength / wordsPerMinute));
 
     // 🔗 Ekstraksi Link Aksi (GitHub, Paper, Publikasi, dsb.) secara Dinamis menggunakan Regex
-    const actions: { label: string; url: string; type: "github" | "external" }[] = [];
+    const actions: { label: string; url: string; type: string }[] = [];
+
+    // 1. Ambil dari field "urls" di projectsData.json (Prioritas Utama)
+    if (project.urls) {
+        Object.entries(project.urls).forEach(([key, url]) => {
+            if (url) {
+                actions.push({
+                    label: key.charAt(0).toUpperCase() + key.slice(1),
+                    url: url as string,
+                    type: key.toLowerCase()
+                });
+            }
+        });
+    }
+
+    // 2. Ekstraksi dari Markdown (Fallback)
     const mdLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g;
     let match;
     while ((match = mdLinkRegex.exec(markdownContent)) !== null) {
@@ -97,14 +117,15 @@ export default async function DetailProjectPage({ params }: Props) {
         const url = match[2];
         const lowerUrl = url.toLowerCase();
 
+        // Hindari duplikasi jika sudah ada di urls
+        if (actions.some(a => a.url === url)) continue;
+
         if (lowerUrl.includes("github.com")) {
-            if (!actions.some(a => a.url === url)) {
-                actions.push({
-                    label: label.replace(/🔗|\*\*|\*/g, "").trim(),
-                    url,
-                    type: "github"
-                });
-            }
+            actions.push({
+                label: label.replace(/🔗|\*\*|\*/g, "").trim(),
+                url,
+                type: "github"
+            });
         } else if (
             lowerUrl.includes("journal") ||
             lowerUrl.includes("article") ||
@@ -113,13 +134,11 @@ export default async function DetailProjectPage({ params }: Props) {
             lowerUrl.includes("research") ||
             lowerUrl.includes("paper")
         ) {
-            if (!actions.some(a => a.url === url)) {
-                actions.push({
-                    label: label.replace(/🔗|\*\*|\*/g, "").trim(),
-                    url,
-                    type: "external"
-                });
-            }
+            actions.push({
+                label: label.replace(/🔗|\*\*|\*/g, "").trim(),
+                url,
+                type: "journal"
+            });
         }
     }
 
@@ -353,9 +372,9 @@ export default async function DetailProjectPage({ params }: Props) {
                                             const isYoutube = typeof src === "string" && (src.includes("youtube.com") || src.includes("youtu.be"));
                                             const widthVal = parseInt(String(props.width || ""));
                                             const heightVal = parseInt(String(props.height || ""));
-                                            const isVertical = (widthVal && heightVal && heightVal > widthVal) || 
-                                                               (typeof props.src === "string" && (props.src.includes("/shorts/") || props.src.includes("O2S1L_jSC8o"))) || 
-                                                               props.className?.includes("short");
+                                            const isVertical = (widthVal && heightVal && heightVal > widthVal) ||
+                                                (typeof props.src === "string" && (props.src.includes("/shorts/") || props.src.includes("O2S1L_jSC8o"))) ||
+                                                props.className?.includes("short");
 
                                             // Strip out hardcoded width/height to let the container control responsiveness
                                             const { width: _w, height: _h, ...cleanProps } = props;
@@ -431,6 +450,63 @@ export default async function DetailProjectPage({ params }: Props) {
                                 <ProfileCard />
                             </div>
 
+
+                            {/* Action Card (Dynamic CTA Links) */}
+                            <div
+                                className="glass-card rounded-2xl p-6 border border-gray-800/40 space-y-5 shadow-xl"
+                                data-aos="fade-left"
+                                data-aos-delay="150"
+                            >
+                                <h4 className="text-md font-bold text-white font-display border-b border-gray-800/50 pb-2.5 flex items-center gap-2">
+                                    <LuBookmark className="text-teal-400" size={18} />
+                                    Actions & Resources
+                                </h4>
+                                <div className="flex flex-col gap-3">
+                                    {actions.length > 0 ? (
+                                        actions.map((act, aIdx) => {
+                                            const getIcon = (type: string) => {
+                                                switch (type) {
+                                                    case "github": return <LuGithub size={16} />;
+                                                    case "youtube": return <LuYoutube size={16} />;
+                                                    case "website":
+                                                    case "demo":
+                                                    case "live": return <LuGlobe size={16} />;
+                                                    case "playstore": return <LuGamepad2 size={16} />;
+                                                    case "journal":
+                                                    case "paper": return <LuBookOpen size={16} />;
+                                                    default: return <LuLink size={16} />;
+                                                }
+                                            };
+
+                                            return (
+                                                <a
+                                                    key={aIdx}
+                                                    href={act.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-bold text-sm shadow-md transition-all duration-300 hover:-translate-y-0.5 cursor-pointer bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white hover:shadow-teal-500/10"
+                                                >
+                                                    {getIcon(act.type)}
+                                                    {act.label}
+                                                </a>
+                                            );
+                                        })
+                                    ) : (
+                                        <div className="text-center py-4 bg-gray-500/5 rounded-xl border border-dashed border-gray-850">
+                                            <span className="text-xs text-gray-400 font-medium block">Project links are available inside the article</span>
+                                        </div>
+                                    )}
+
+                                    <Link
+                                        href="/#proyek"
+                                        className="w-full inline-flex items-center justify-center gap-2 border border-gray-805 hover:border-teal-500/40 bg-gray-900/20 hover:bg-gray-850/40 text-gray-400 hover:text-teal-400 px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+                                    >
+                                        <LuArrowLeft size={16} />
+                                        Back to Portfolio
+                                    </Link>
+                                </div>
+                            </div>
+
                             {/* Meta Details Card */}
                             <div
                                 className="glass-card rounded-2xl p-6 border border-gray-800/40 space-y-4 shadow-xl"
@@ -453,48 +529,6 @@ export default async function DetailProjectPage({ params }: Props) {
                                 </div>
                             </div>
 
-                            {/* Action Card (Dynamic CTA Links) */}
-                            <div
-                                className="glass-card rounded-2xl p-6 border border-gray-800/40 space-y-5 shadow-xl"
-                                data-aos="fade-left"
-                                data-aos-delay="150"
-                            >
-                                <h4 className="text-md font-bold text-white font-display border-b border-gray-800/50 pb-2.5 flex items-center gap-2">
-                                    <LuBookmark className="text-teal-400" size={18} />
-                                    Actions & Resources
-                                </h4>
-                                <div className="flex flex-col gap-3">
-                                    {actions.length > 0 ? (
-                                        actions.map((act, aIdx) => (
-                                            <a
-                                                key={aIdx}
-                                                href={act.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className={`w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-bold text-sm shadow-md transition-all duration-300 hover:-translate-y-0.5 cursor-pointer ${act.type === 'github'
-                                                    ? 'bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white hover:shadow-teal-500/10'
-                                                    : 'border border-gray-805 hover:border-teal-500 bg-gray-900/60 hover:bg-gray-850/80 text-gray-200 hover:text-teal-400'
-                                                    }`}
-                                            >
-                                                {act.type === 'github' ? <LuGithub size={16} /> : <LuExternalLink size={16} />}
-                                                {act.label}
-                                            </a>
-                                        ))
-                                    ) : (
-                                        <div className="text-center py-4 bg-gray-500/5 rounded-xl border border-dashed border-gray-850">
-                                            <span className="text-xs text-gray-400 font-medium block">Project links are available inside the article</span>
-                                        </div>
-                                    )}
-
-                                    <Link
-                                        href="/#proyek"
-                                        className="w-full inline-flex items-center justify-center gap-2 border border-gray-805 hover:border-teal-500/40 bg-gray-900/20 hover:bg-gray-850/40 text-gray-400 hover:text-teal-400 px-5 py-3 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
-                                    >
-                                        <LuArrowLeft size={16} />
-                                        Back to Portfolio
-                                    </Link>
-                                </div>
-                            </div>
 
                             {/* Tech Stack Card (Dynamic Tag Lists) */}
                             {techStack.length > 0 && (
