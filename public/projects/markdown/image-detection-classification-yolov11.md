@@ -57,7 +57,7 @@ Training is done via Jupyter notebooks provided in the repo:
 You can run a prediction to detect palm trees and generate an image where each tree is boxed and labeled with a number.
 
 **Output Example**:  
-![Palm Detection](/projects/img/Count_Palm.jpg)
+![Palm Detection](/projects/img/count_palm.jpg)
 
 ---
 
