@@ -38,8 +38,8 @@ import {
     SiReact
 } from "react-icons/si";
 
-import myData from "@/app/data/myData.json";
-import projectsData from "@/app/data/projectsData.json";
+import myData from "./data/myData.json";
+import projectsData from "./data/projectsData.json";
 
 const roles = ["Data Scientist", "Machine Learning Engineer", "AI Developer"];
 
@@ -219,59 +219,27 @@ export default function Home() {
 
     // Consolidated Education + Experience Timeline Data
     const timelineData = [
-        {
+        ...(myData.work_experience || []).map(exp => ({
             type: "work",
-            title: "Machine Learning Engineer Intern",
-            subtitle: "PT. Inti Utama Solusindo (Pharos Group)",
-            date: "Aug 2023 - Dec 2023",
-            description: [
-                "Developed an intelligent RAG chatbot based on Django & Langchain using trusted health journals.",
-                "Extracted and compiled a structured knowledge base from open-access journals.",
-                "Optimized PostgreSQL relational database queries for chatbot search performance.",
-                "Worked alongside the medical team to evaluate LLM model performance."
-            ]
-        },
-        {
+            title: exp.title,
+            subtitle: exp.company,
+            date: exp.date,
+            description: exp.description ? exp.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
+        })),
+        ...(myData.education || []).map(edu => ({
             type: "education",
-            title: "Bachelor of Informatics Engineering",
-            subtitle: "Universitas Catur Insan Cendekia",
-            date: "2020 - 2024",
-            description: [
-                "Graduated with Honors.",
-                "Received the Best Thesis award in the Informatics Engineering program with a research focus on AI RAG.",
-                "Active in student organizations and technology development competitions."
-            ]
-        },
-        {
-            type: "work",
-            title: "Machine Learning Cohort",
-            subtitle: "Bangkit Academy (Google, GoTo, Traveloka)",
-            date: "Jan 2023 - Jul 2023",
-            description: [
-                "Completed intensive Machine Learning curriculum: TensorFlow, Deep Learning, and Cloud Computing.",
-                "Built a smart questionnaire recommendation capstone project (Quisiin) using deep learning.",
-                "Passed the Google TensorFlow Developer Certificate certification."
-            ]
-        },
-        {
+            title: edu.degree,
+            subtitle: edu.institution,
+            date: edu.year,
+            description: edu.ipk && edu.ipk !== "-" ? [`GPA: ${edu.ipk}`] : []
+        })),
+        ...(myData.organizations || []).map(org => ({
             type: "org",
-            title: "Vice Head of Research & Development Division",
-            subtitle: "HIMATIF Universitas Catur Insan Cendekia",
-            date: "2022",
-            description: [
-                "Led and designed research program strategies and student technology training.",
-                "Organized basic web development and machine learning workshops for members."
-            ]
-        },
-        {
-            type: "education",
-            title: "Senior High School (IPA)",
-            subtitle: "SMA Negeri 1 Beber",
-            date: "2015 - 2018",
-            description: [
-                "Majored in Mathematics and Natural Sciences (MIPA)."
-            ]
-        }
+            title: org.role,
+            subtitle: org.name,
+            date: org.date,
+            description: org.description ? org.description.split('\n').filter(d => d.trim() !== "").map(d => d.replace(/^[●\s・-]+/, '').trim()) : []
+        }))
     ];
 
     const filteredTimeline = timelineData.filter(item => {
@@ -313,10 +281,10 @@ export default function Home() {
 
                         {/* Social Icons */}
                         <div className="flex items-center gap-5 pt-6 text-gray-300">
-                            <a href="https://github.com/tribber" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="GitHub">
+                            <a href="https://github.com/tribber93" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="GitHub">
                                 <LuGithub size={22} />
                             </a>
-                            <a href="https://linkedin.com/in/yoni-tribber" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="LinkedIn">
+                            <a href="https://linkedin.com/in/yonitribber" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="LinkedIn">
                                 <LuLinkedin size={22} />
                             </a>
                             <a href="mailto:tribberyoni5@gmail.com" className="hover:text-teal-400 transition-colors cursor-pointer" aria-label="Email">
@@ -612,7 +580,7 @@ export default function Home() {
                                 }`}
                         >
                             <LuGraduationCap size={16} />
-                            Education & Leadership
+                            Education & Organizations
                         </button>
                     </div>
 
@@ -637,7 +605,7 @@ export default function Home() {
                                         {/* Dynamic category badge */}
                                         {item.type === "org" && (
                                             <span className="absolute -top-3 right-4 px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-cyan-950 text-cyan-400 border border-cyan-500/20">
-                                                Leadership
+                                                Organizations
                                             </span>
                                         )}
                                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">

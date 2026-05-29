@@ -3,7 +3,13 @@
     "email": "tribberyoni5@gmail.com",
     "phone": "+62 858 6457 1300",
     "picture": "/yoni.jpg",
-    "work experience": [
+    "work_experience": [
+        {
+            "title": "Assembly Division Intern",
+            "company": "DAC Indonesia",
+            "date": "Oct 2025 - Jan 2026",
+            "description": "● Assembled hardware (laptops) with high precision, ensuring all components were installed in compliance with standard operating procedures (SOPs).\n● Responsible for installing operating systems and required software, guaranteeing optimal device functionality prior to distribution.\n● Conducted comprehensive Quality Control (QC) on assembled devices to verify build quality and ensure deployment readiness."
+        },
         {
             "title": "Machine Learning Engineer Intern",
             "company": "PT. Inti Utama Solusindo (Pharos Group)",
@@ -26,12 +32,6 @@
         }
     ],
     "education": [
-        {
-            "degree": "Senior High School (IPA)",
-            "institution": "SMA Negeri 1 Beber",
-            "year": "2015 - 2018",
-            "ipk": "-"
-        },
         {
             "degree": "Bachelor of Informatics Engineering",
             "institution": "Universitas Catur Insan Cendekia",
